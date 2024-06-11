@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 defined('BASEPATH') OR exit('No direct script access allowed');
+=======
+defined('BASEPATH') or exit('No direct script access allowed');
+>>>>>>> 84eef4ffacaed76f8ba2c18933d303b679635b90
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +56,11 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
+<<<<<<< HEAD
 $config['uri_protocol']	= 'REQUEST_URI';
+=======
+$config['uri_protocol']    = 'REQUEST_URI';
+>>>>>>> 84eef4ffacaed76f8ba2c18933d303b679635b90
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +86,11 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
+<<<<<<< HEAD
 $config['language']	= 'english';
+=======
+$config['language']    = 'english';
+>>>>>>> 84eef4ffacaed76f8ba2c18933d303b679635b90
 
 /*
 |--------------------------------------------------------------------------
@@ -408,12 +420,21 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
+<<<<<<< HEAD
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
 $config['cookie_samesite'] 	= 'Lax';
+=======
+$config['cookie_prefix']    = '';
+$config['cookie_domain']    = '';
+$config['cookie_path']        = '/';
+$config['cookie_secure']    = FALSE;
+$config['cookie_httponly']     = FALSE;
+$config['cookie_samesite']     = 'Lax';
+>>>>>>> 84eef4ffacaed76f8ba2c18933d303b679635b90
 
 /*
 |--------------------------------------------------------------------------
