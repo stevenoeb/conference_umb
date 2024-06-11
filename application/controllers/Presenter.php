@@ -66,6 +66,7 @@ class Presenter extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $upload_journal = $_FILES['journal_path']['name'];
+			$upload_poster = str_replace(' ', '_', $upload_poster);
             $config = array();
             $config['allowed_types'] = 'docx|pdf|doc';
             $config['upload_path'] = './assets/data/jurnal/';
@@ -74,6 +75,7 @@ class Presenter extends CI_Controller
             $upjournal = $this->uploadjurnal->do_upload('journal_path');
 
             $upload_poster = $_FILES['poster_path']['name'];
+			$upload_poster = str_replace(' ', '_', $upload_poster);
             $config = array();
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['upload_path'] = './assets/data/poster/';
