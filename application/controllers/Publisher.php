@@ -30,16 +30,6 @@ class Publisher extends CI_Controller
     {
         $data = $this->db->get_where('conference_submissions', ['id' => $id])->row();
         if ($data) {
-<<<<<<< HEAD
-            $path = 'assets/data/jurnal/' . $data->journal_path;
-            if (file_exists($path)) {
-                force_download($path, NULL);
-            } else {
-                echo 'File tidak ditemukan.';
-            }
-        } else {
-            echo 'Maaf, data yang Anda cari tidak ditemukan.';
-=======
             if (!$data->journal_path) {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf, data yang Anda cari tidak ditemukan.</div>');
                 redirect('publisher');
@@ -52,7 +42,6 @@ class Publisher extends CI_Controller
                     redirect('publisher');
                 }
             }
->>>>>>> 84eef4ffacaed76f8ba2c18933d303b679635b90
         }
     }
 }
