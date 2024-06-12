@@ -10,6 +10,13 @@ class Auth extends CI_Controller
     }
     public function index()
     {
+        
+            // $this->load->view('templates/auth_header', $data);
+            $this->load->view('front/front');
+            // $this->load->view('templates/auth_footer');
+    }
+    public function login()
+    {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
         if ($this->form_validation->run() == false) {
