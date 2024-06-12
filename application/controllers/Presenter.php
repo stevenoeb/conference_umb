@@ -14,6 +14,7 @@ class Presenter extends CI_Controller
         $data['title'] = 'Presenter';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -25,6 +26,12 @@ class Presenter extends CI_Controller
     {
         $data['title'] = 'My Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Myconference_model', 'myconference');
+
+        $data['dataSubmit'] = $this->myconference->getDataSubmit();
+        $data['myconference'] = $this->db->get('user')->result_array();
+
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
