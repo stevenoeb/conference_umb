@@ -42,6 +42,7 @@ class Admin extends CI_Controller
             redirect('admin/role');
         }
     }
+
     public function roleAccess($role_id)
     {
         $data['title'] = 'Role Access';
@@ -77,5 +78,20 @@ class Admin extends CI_Controller
             $this->db->delete('user_access_menu', $data);
         }
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed</div>');
+    }
+
+    public function verify_payment()
+    {
+        $data['title'] = 'Verify Payment';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Admin_model', 'payment');
+        $data['payment'] = $this->payment->getPayment();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/payment-verification', $data);
+        $this->load->view('templates/footer');
     }
 }
