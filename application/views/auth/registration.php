@@ -24,6 +24,7 @@
                                     <option value="2">User</option>
                                     <option value="3">Presenter</option>
                                     <option value="4">Olimpiade</option>
+                                    <option value="5">Publisher</option>
                                 </select>
                                 <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -45,7 +46,7 @@
                             <a class="small" href="forgot-password.html">Forgot Password?</a>
                         </div>
                         <div class="text-center">
-                            <a class="small" href="<?= base_url(); ?>auth">Already have an account? Login!</a>
+                            <a class="small" href="<?= base_url("auth/login"); ?>">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>
