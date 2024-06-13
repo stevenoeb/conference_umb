@@ -14,6 +14,7 @@ class Presenter extends CI_Controller
         $data['title'] = 'Presenter';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -25,6 +26,12 @@ class Presenter extends CI_Controller
     {
         $data['title'] = 'My Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Myconference_model', 'myconference');
+
+        $data['dataSubmit'] = $this->myconference->getDataSubmit();
+        $data['myconference'] = $this->db->get('user')->result_array();
+
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -66,7 +73,7 @@ class Presenter extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $upload_journal = $_FILES['journal_path']['name'];
-			$upload_poster = str_replace(' ', '_', $upload_poster);
+            $upload_journal = str_replace(' ', '_', $upload_journal);
             $config = array();
             $config['allowed_types'] = 'docx|pdf|doc';
             $config['upload_path'] = './assets/data/jurnal/';
@@ -75,7 +82,7 @@ class Presenter extends CI_Controller
             $upjournal = $this->uploadjurnal->do_upload('journal_path');
 
             $upload_poster = $_FILES['poster_path']['name'];
-			$upload_poster = str_replace(' ', '_', $upload_poster);
+            $upload_poster = str_replace(' ', '_', $upload_poster);
             $config = array();
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['upload_path'] = './assets/data/poster/';

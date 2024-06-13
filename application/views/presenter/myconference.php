@@ -13,23 +13,24 @@
                         <br>
                         <table class="table table-user-information table-sm">
                             <tbody>
+
                                 <tr>
                                     <td style="width:25%">
-                                        <strong>Abstract Code</strong>
+                                        <strong>id</strong>
                                     </td>
-                                    <td>ABS-5389</td>
+                                    <td><?= $dataSubmit[0]['id'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:25%">
                                         <strong>Title</strong>
                                     </td>
-                                    <td>blalbalbabalbabalbalblablablablbalbabalbalbalb</td>
+                                    <td><?= $dataSubmit[0]['title'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:25%">
-                                        <strong>Role</strong>
+                                        <strong>Name</strong>
                                     </td>
-                                    <td>Presenter</td>
+                                    <td><?= $dataSubmit[0]['name'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:25%">
@@ -82,7 +83,8 @@
             </div>
             <div class="card-footer">
                 <div class="float-right">
-                    <a href="" target="_blank" class="btn btn-info">
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#newVideoModal">
+                        <!-- <a href="" target="_blank" class="btn btn-info"> -->
                         <i class="fa fa-camera">
                         </i>
                         Upload Video Presentation
@@ -107,3 +109,35 @@
         </div>
     </div>
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="newVideoModal" tabindex="-1" aria-labelledby="newVideoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newVideoModalLabel">Upload Video Presentation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form enctype="multipart/form-data" method="post" action="<?= base_url('presenter/myconference') ?>">
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <label for="video_path">File VIDEO PRESENTATION (Format MP4 Max size : 128MB)</label>
+                                <input type="file" class="form-control" name="video_path" id="video_path" style="padding-bottom: 35px">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
