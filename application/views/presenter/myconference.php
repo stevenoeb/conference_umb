@@ -18,42 +18,26 @@
                                     <td style="width:25%">
                                         <strong>id</strong>
                                     </td>
-                                    <td><?= $dataSubmit[0]['id'] ?></td>
+                                    <td><?= $dataSubmit[7]['id'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:25%">
                                         <strong>Title</strong>
                                     </td>
-                                    <td><?= $dataSubmit[0]['title'] ?></td>
+                                    <td><?= $dataSubmit[7]['title'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:25%">
                                         <strong>Name</strong>
                                     </td>
-                                    <td><?= $dataSubmit[0]['name'] ?></td>
-                                </tr>
-                                <tr>
-                                    <td style="width:25%">
-                                        <strong>To be Published</strong>
-                                    </td>
-                                    <td>
-                                        <a class="badge badge-success text-light">Publish</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:25%">
-                                        <strong>To be Presented</strong>
-                                    </td>
-                                    <td>
-                                        <a class="badge badge-success text-light">Presented</a>
-                                    </td>
+                                    <td><?= $dataSubmit[7]['name'] ?></td>
                                 </tr>
                                 <tr>
                                     <td style="width:25%">
                                         <strong>Is Accepted</strong>
                                     </td>
                                     <td>
-                                        <a class="badge badge-success text-light">Accepted</a>
+                                        <a class="badge badge-success text-light"><?= $dataSubmit[7]['is_accept'] ?></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,7 +45,7 @@
                                         <strong>Is Paid?</strong>
                                     </td>
                                     <td>
-                                        <a class="badge badge-success text-light">Paid</a>
+                                        <a class="badge badge-success text-light"><?= $dataSubmit[7]['is_paid'] ?></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -87,7 +71,7 @@
                         <!-- <a href="" target="_blank" class="btn btn-info"> -->
                         <i class="fa fa-camera">
                         </i>
-                        Upload Video Presentation
+                        Upload Link Video Presentation
                     </a>
                     <a href="" class="btn btn-success">Fullpaper</a>
                     <a class="btn btn-info text-light" data-toggle="modal" data-target="#modal-edit" data-target="#certificateModal">
@@ -116,26 +100,24 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="newVideoModalLabel">Upload Video Presentation</h5>
+                <h5 class="modal-title" id="newVideoModalLabel">Upload Link Video Presentation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form enctype="multipart/form-data" method="post" action="<?= base_url('presenter/myconference') ?>">
+            <form action="<?= base_url('presenter/myconference'); ?>" method="post">
                 <div class="modal-body">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <label for="video_path">File VIDEO PRESENTATION (Format MP4 Max size : 128MB)</label>
-                                <input type="file" class="form-control" name="video_path" id="video_path" style="padding-bottom: 35px">
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="id" name="id" value="<?= $dataSubmit[7]['id'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Link Video Presentation">
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </form>
         </div>

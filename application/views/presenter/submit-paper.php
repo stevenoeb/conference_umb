@@ -27,8 +27,8 @@
                                 <label for="Is_Publihesed">Do you intend to Publish Your Paper?</label>
                                 <select class="form-control" name="publish_journal" id="publish_journal">
                                     <!-- <option value="">Select..</option> -->
-                                    <option value="1">Yes</option>
-                                    <option value="0">No</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
                                 </select>
                             </div>
                         </div>
