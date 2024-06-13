@@ -10,10 +10,10 @@ class Auth extends CI_Controller
     }
     public function index()
     {
-        
-            // $this->load->view('templates/auth_header', $data);
-            $this->load->view('front/front');
-            // $this->load->view('templates/auth_footer');
+
+        // $this->load->view('templates/auth_header', $data);
+        $this->load->view('front/front');
+        // $this->load->view('templates/auth_footer');
     }
 
     public function comingsoon()
@@ -57,18 +57,20 @@ class Auth extends CI_Controller
                         redirect('presenter');
                     } else if ($user['role_id'] == 4) {
                         redirect('olimpiade');
+                    } else if ($user['role_id'] == 5) {
+                        redirect('publisher');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password</div>');
-                    redirect('auth');
+                    redirect('auth/login');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Your account is not active</div>');
-                redirect('auth');
+                redirect('auth/login');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered</div>');
-            redirect('auth');
+            redirect('auth/login');
         }
     }
 
@@ -102,7 +104,7 @@ class Auth extends CI_Controller
             ];
             $this->db->insert('user', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulations, your account is now active!</div>');
-            redirect('auth');
+            redirect('auth/login');
         }
     }
     public function logout()
