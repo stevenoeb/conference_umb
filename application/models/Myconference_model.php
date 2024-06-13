@@ -11,4 +11,15 @@ class Myconference_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+
+    public function getMyConference()
+    {
+        $query = "SELECT `cs`.*, `user`.`id`, `user`.`name`
+        FROM `conference_submissions` AS `cs`
+        INNER JOIN `user`
+        ON `cs`.`user_id` = `user`.`id`
+        WHERE `user`.`id` = 14";
+
+        return $this->db->query($query)->result_array();
+    }
 }
