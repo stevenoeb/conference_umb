@@ -15,6 +15,13 @@ class Auth extends CI_Controller
             $this->load->view('front/front');
             // $this->load->view('templates/auth_footer');
     }
+
+    public function comingsoon()
+    {
+           
+            $this->load->view('front/comingsoon');
+    } 
+
     public function login()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
