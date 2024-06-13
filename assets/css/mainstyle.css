@@ -141,6 +141,11 @@ h6 {
   background-color: #f6f7fd;
 }
 
+.logo-bulet {
+  width: 10%;
+  border-radius: 50%;
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -695,6 +700,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: auto; /* Pusatkan gambar */
 }
 
+.popup-overlay {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 999; /* Ensure it sits above other elements */
+}
+
+.popup {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the popup */
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it sits above the overlay */
+}
+
+.popup p {
+  margin: 0 0 20px; /* Margin for spacing */
+}
+
+.popup button {
+  padding: 10px 20px;
+  background-color: #f82249;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
 /*--------------------------------------------------------------
 # Background Section
@@ -702,6 +741,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #background p {
   text-align: center;
+  font-size: 18px;
+  font-style: italic;
+  margin: 0 auto 30px auto;
   
 }
 
@@ -715,6 +757,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
+}
+
+#background .judul {
+  text-align: center;
+  font-size: 25px;
+  font-style: italic;
+  margin: 0 auto 30px auto;
 }
 
 /*--------------------------------------------------------------
@@ -852,7 +901,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #schedule .sub-heading {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-style: italic;
   margin: 0 auto 30px auto;
 }

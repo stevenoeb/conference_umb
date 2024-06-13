@@ -73,12 +73,12 @@
   <section id="intro">
     <div class="intro-container wow fadeIn">
       <div class="logo-container" style="display: flex; align-items: center; justify-content: center;">
-        <img src="<?= base_url('assets/img/logo/UMBandung.png'); ?>" alt="Logo" style="width: 10%;">
+        <img src="<?= base_url('assets/img/logo/umb.jpg'); ?>" alt="Logo" class="logo-bulet">
         <img src="<?= base_url('assets/img/logo/LOGO.png'); ?>" alt="Logo" style="width: 15%; margin-right: 20px;">
         <img src="<?= base_url('assets/img/logo/UMSidoarjo.png'); ?>" alt="Logo" style="width: 10%;">
       </div>
       <h1 class="mb-4 pb-0">Accounting Conference<br><span style="color: #3DD99E;">on Sustainability </span>and Technopreneurial (ACST):<br>1st International Series.</h1>
-      <p class="mb-4 pb-0">Friday, July 19th 2024, Muhammadiyah Bandung University, Bandung</p>
+      <p class="mb-4 pb-0">July 3rd & 19th 2024, Muhammadiyah University of Bandung , Indonesia</p>
       <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
         data-autoplay="true"></a>
       <a href="#about" class="about-btn scrollto">About The Event</a>
@@ -93,12 +93,18 @@
     <section id="about" class="wow fadeInUp">
       <div class="container">
         <div class="aboutnav">
-          <a href="<?= base_url('auth/registration'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
-          <a href="<?= base_url('auth/login'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
+          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
+          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
           <a href="#schedule" class="navigasion"><img src="assets/img/calendar.png" alt="Schedule Icon"> Schedule</a>
         </div>
       </div>
     </section>
+
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="popup">
+      <p>Coming Soon</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
 
     <!--==========================
       Background Section
@@ -107,7 +113,7 @@
       <div class="container">
         <div class="section-header">
           <h2>Background</h2>
-          <p>“Accounting Challenges and Opportunities in the Global Era”</p>
+          <h3 class="judul">“Accounting Challenges and Opportunities in the Global Era”</h3>
         </div>
       <p>Various efforts are needed to improve the learning process through seminar activities to build a conducive academic atmosphere, especially for academics. 
         International seminars that are held will not only contribute to the field of science but can also enhance the performance of universities which ultimately become world-class universities. 
@@ -132,10 +138,11 @@
         <div class="row">
           <div class="col-lg-4 col-md-6">
             <div class="speaker">
-              <img src="assets/img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
+              <img src="assets/img/speakers/Rektor.png" alt="Speaker 1" class="img-fluid">
               <div class="details">
                 <h3 style="font-size: 17px;"><a href="speaker-details.html">Prof. Dr. Ir. Herry Suhardiyanto, M.Sc., IPU.</a></h3>
-                <p>Muhammadiyah University of Bandung, Indonesia</p>
+                <p>Muhammadiyah University of Bandung</p>
+                <p>Indonesia</p>
                 <div class="social">
                   <a href=""><i class="fa fa-twitter"></i></a>
                   <a href=""><i class="fa fa-facebook"></i></a>
@@ -147,10 +154,10 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="speaker">
-              <img src="assets/img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
+              <img src="assets/img/speakers/Ataliapraratya.jpg" alt="Speaker 6" class="img-fluid">
               <div class="details">
-                <h3><a href="speaker-details.html">Bobur Subirov</a></h3>
-                <p style="font-size: 13px;">Tashkent State University of Economics Samarkand Branch</p>
+                <h3 style="font-size: 17px;"><a href="speaker-details.html">Dr. Hj. Atalia Pratatya, SIP., M.I.Kom.</a></h3>
+                <p>Indonesia</p>
                 <div class="social">
                   <a href=""><i class="fa fa-twitter"></i></a>
                   <a href=""><i class="fa fa-facebook"></i></a>
@@ -162,40 +169,11 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="speaker">
-              <img src="assets/img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Dr. Bisa Sarkar</a></h3>
-                <p>Ajeenkya D.Y. Patil University of India</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="assets/img/speakers/4.jpg" alt="Speaker 4" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Lili Susanti Binti Samsurijal</a></h3>
-                <p> Dean of Bussines School, UniKL</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="assets/img/speakers/5.jpg" alt="Speaker 5" class="img-fluid">
+              <img src="assets/img/speakers/Sigit.png" alt="Speaker 5" class="img-fluid">
               <div class="details">
                 <h3 style="font-size: 17px;"><a href="speaker-details.html">Dr. Sigit Hermawan, SE., M.Si., CIQaR., CRP</a></h3>
                 <p>Universitas Muhammadiyah Sidoarjo</p>
+                <p>Indonesia</p>
                 <div class="social">
                   <a href=""><i class="fa fa-twitter"></i></a>
                   <a href=""><i class="fa fa-facebook"></i></a>
@@ -207,10 +185,43 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="speaker">
-              <img src="assets/img/speakers/6.jpg" alt="Speaker 6" class="img-fluid">
+              <img src="assets/img/speakers/Bobur.png" alt="Speaker 2" class="img-fluid">
               <div class="details">
-                <h3 style="font-size: 17px;"><a href="speaker-details.html">Dr. Hj. Atalia Pratatya, SIP., M.I.Kom.</a></h3>
-                <p>Muhammadiyah University of Sidoarjo, Indonesia</p>
+                <h3><a href="speaker-details.html">Bobur Subirov</a></h3>
+                <p style="font-size: 13px;">Tashkent State University of Economics Samarkand Branch</p>
+                <p>Uzbekistan</p>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="speaker">
+              <img src="assets/img/speakers/Bisa.png" alt="Speaker 3" class="img-fluid">
+              <div class="details">
+                <h3><a href="speaker-details.html">Dr. Bisa Sarkar</a></h3>
+                <p>Ajeenkya D.Y. Patil University of India</p>
+                <p>India</p>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="speaker">
+              <img src="assets/img/speakers/LILI.jpg" alt="Speaker 4" class="img-fluid">
+              <div class="details">
+                <h3><a href="speaker-details.html">Lili Susanti Binti Samsurijal</a></h3>
+                <p>Dean of Bussines School, UniKL</p>
+                <p>Malaysia</p>
                 <div class="social">
                   <a href=""><i class="fa fa-twitter"></i></a>
                   <a href=""><i class="fa fa-facebook"></i></a>
@@ -297,9 +308,9 @@
             <div class="row schedule-item">
               <div class="col-md-2"><time>08.40 - 08.55</time></div>
               <div class="col-md-10">
-                <div class="speaker">
+                <!-- <div class="speaker">
                   <img src="assets/img/logo/LOGO.png" alt="Jack Christiansen">
-                </div>
+                </div> -->
                 <h4>Opening of ACST 2024</h4>
                 <p>Opening speech from Prof. Dr. Ir. Herry Suhardiyanto, M.Sc., IPU.</p>
               </div>
@@ -309,9 +320,9 @@
             <div class="row schedule-item">
               <div class="col-md-2"><time>08.55 - 09.10</time></div>
               <div class="col-md-10">
-                <div class="speaker">
+                <!-- <div class="speaker">
                   <img src="assets/img/speakers/5.jpg" alt="Alejandrin Littel">
-                </div>
+                </div> -->
                 <h4>Keynote Speaker</h4>
                 <p>Dr. Hj. Atalia Pratatya, SIP., M.I.Kom.</p>
               </div>
@@ -331,9 +342,9 @@
             <div class="row schedule-item">
               <div class="col-md-2"><time>09.15 - 09.45</time></div>
               <div class="col-md-10">
-                <div class="speaker">
+                <!-- <div class="speaker">
                   <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
-                </div>
+                </div> -->
                 <h4>Speaker 1</h4>
                 <p>Bobur Subirov</p>
               </div>
@@ -342,9 +353,9 @@
             <div class="row schedule-item">
               <div class="col-md-2"><time>09.45 - 10.15</time></div>
               <div class="col-md-10">
-                <div class="speaker">
+                <!-- <div class="speaker">
                   <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
-                </div>
+                </div> -->
                 <h4>Speaker 2</h4>
                 <p>Lili Susanti Binti Samsurijal</p>
               </div>
@@ -353,9 +364,9 @@
             <div class="row schedule-item">
               <div class="col-md-2"><time>10.15 - 10.45</time></div>
               <div class="col-md-10">
-                <div class="speaker">
+                <!-- <div class="speaker">
                   <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
-                </div>
+                </div> -->
                 <h4>Speaker 3</h4>
                 <p>Dr. Sigit Hermawan, SE., M.Si., CIQaR., CRP.</p>
               </div>
@@ -364,9 +375,9 @@
             <div class="row schedule-item">
               <div class="col-md-2"><time>10.45 - 11.15</time></div>
               <div class="col-md-10">
-                <div class="speaker">
+                <!-- <div class="speaker">
                   <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
-                </div>
+                </div> -->
                 <h4>Speaker 4</h4>
                 <p>Dr. Bisa Sarkar</p>
               </div>
@@ -533,7 +544,7 @@
     <!--==========================
       Gallery Section
     ============================-->
-    <style>
+    <!-- <style>
       #gallery {
         background-color: white;
       }
@@ -558,7 +569,7 @@
         <a href="assets/img/gallery/8.jpg" class="venobox" data-gall="gallery-carousel"><img src="assets/img/gallery/8.jpg" alt=""></a>
       </div>
 
-    </section>
+    </section> -->
 
     <!--==========================
       Sponsors Section
@@ -925,12 +936,12 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6 footer-info">
+          <div class="col-lg-6 col-md-6 footer-info">
             <img src="assets/img/logo/LOGO.png" alt="TheEvenet">
             <p>Various efforts are needed to improve the learning and academic atmosphere. International seminars such as Accounting Conference on Sustainability and Technopreneurial (ACST): 1st International Series by Universitas Muhammadiyah Bandung and Universitas Muhammadiyah Sidoarjo contribute to knowledge and improve university performance. These activities are aimed at lecturers and students, and include Join Seminar programs to increase accounting publications and competitions for students' international recognition.</p>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <!-- <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="fa fa-angle-right"></i> <a href="#">Home</a></li>
@@ -939,9 +950,9 @@
               <li><i class="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
-          </div>
+          </div> -->
 
-          <div class="col-lg-3 col-md-6 footer-links">
+          <!-- <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="fa fa-angle-right"></i> <a href="#">Home</a></li>
@@ -950,25 +961,25 @@
               <li><i class="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
-          </div>
+          </div> -->
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-6 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
               Universitas Muhammadiyah Bandung<br>
               Jl. Soekarno Hatta No.752, Cipadung Kidul, Kec. Panyileukan, Bandung City<br>
               Indonesia <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Phone:</strong> 0895 3719 53670 or 0896 8723 9219<br>
               <strong>Email:</strong> <a href="https://umbandung.ac.id/">https://umbandung.ac.id/</a><br>
             </p>
 
-            <div class="social-links">
+            <!-- <div class="social-links">
               <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
               <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
               <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
               <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
               <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div>
+            </div> -->
 
           </div>
 
@@ -978,7 +989,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>TheEvent</strong>. All Rights Reserved
+        &copy; Copyright <strong>UMbandung</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
