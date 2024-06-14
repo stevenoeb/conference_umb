@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800 text-center">Coming Soon</h1>
+    <div class="error mx-auto w-100" data-text="Coming Soon...">Coming Soon...</div>
 
 </div>
 <!-- /.container-fluid -->

@@ -19,7 +19,7 @@
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <select class="form-control form-control-user" id="role_id" name="role_id">
+                                <select class="form-control" style="font-size:0.8rem; border-radius: 10rem; height: 3rem; padding: 0 1rem" id="role_id" name="role_id">
                                     <option selected>Open this select menu</option>
                                     <option value="2">User</option>
                                     <option value="3">Presenter</option>

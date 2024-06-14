@@ -93,8 +93,8 @@
     <section id="about" class="wow fadeInUp">
       <div class="container">
         <div class="aboutnav">
-          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
-          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
+          <a href="<?= base_url('auth/registration'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
+          <a href="<?= base_url('auth/login'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
           <a href="#schedule" class="navigasion"><img src="assets/img/calendar.png" alt="Schedule Icon"> Schedule</a>
         </div>
       </div>
