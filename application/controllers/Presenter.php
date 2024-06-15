@@ -89,20 +89,50 @@ class Presenter extends CI_Controller
             redirect('presenter');
         }
     }
+    // public function myconference()
+    // {
+    //     $data['title'] = 'My Conference';
+    //     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    //     $this->load->model('Myconference_model', 'myconference');
+
+    //     $data['dataSubmit'] = $this->myconference->getDataSubmit();
+    //     $data['myconference'] = $this->db->get('user')->result_array();
+
+
+    //     $this->form_validation->set_rules('video_link', 'Link Video Presentation', 'required|trim');
+
+    //     if ($this->form_validation->run() == false) {
+
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/sidebar', $data);
+    //         $this->load->view('templates/topbar', $data);
+    //         $this->load->view('presenter/myconference', $data);
+    //         $this->load->view('templates/footer');
+    //     } else {
+    //         $video_link = $this->input->post('video_link');
+    //         $id = $this->input->post('id');
+
+    //         $this->db->set('link_video', $video_link);
+    //         $this->db->where('id', $id);
+    //         $this->db->update('conference_submissions');
+
+    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your video has been updated!</div>');
+    //         redirect('presenter/myconference');
+    //     }
+    // }
+
     public function myconference()
     {
         $data['title'] = 'My Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Myconference_model', 'myconference');
 
-        $data['dataSubmit'] = $this->myconference->getDataSubmit();
-        $data['myconference'] = $this->db->get('user')->result_array();
-
+        $user_id = $data['user']['id']; // Assuming user table has an 'id' column
+        $data['dataSubmit'] = $this->myconference->getDataSubmitByUserId($user_id);
 
         $this->form_validation->set_rules('video_link', 'Link Video Presentation', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
