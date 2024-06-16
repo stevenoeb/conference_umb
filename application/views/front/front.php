@@ -10,7 +10,7 @@
 
   <!-- Favicons -->
   <link href="<?= base_url('assets/img/apple-touch-icon.png'); ?>" rel="apple-touch-icon">
-  <link href="<?= base_url('assets/img/favicon.png'); ?>" rel="icon">
+  <link href="<?= base_url('assets/img/logo/LOGO.jpg'); ?>" rel="icon">
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
@@ -26,7 +26,8 @@
 
   <!-- Main Stylesheet File -->
   <link href="<?= base_url('assets/css/mainstyle.css'); ?>" rel="stylesheet">
-
+  <link href="<?= base_url('assets/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
+  
   <!-- =======================================================
     Theme Name: TheEvent
     Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
@@ -93,8 +94,8 @@
     <section id="about" class="wow fadeInUp">
       <div class="container">
         <div class="aboutnav">
-          <a href="<?= base_url('auth/registration'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
-          <a href="<?= base_url('auth/login'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
+          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
+          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
           <a href="#schedule" class="navigasion"><img src="assets/img/calendar.png" alt="Schedule Icon"> Schedule</a>
         </div>
       </div>
