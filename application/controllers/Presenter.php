@@ -28,6 +28,11 @@ class Presenter extends CI_Controller
     {
         $data['title'] = 'Payment';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Myconference_model', 'myconference');
+
+        $user_id = $data['user']['id'];
+        $data['dataSubmit'] = $this->myconference->getDataSubmitByUserId($user_id);
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

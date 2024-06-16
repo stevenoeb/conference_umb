@@ -59,6 +59,8 @@ class Auth extends CI_Controller
                         redirect('olimpiade');
                     } else if ($user['role_id'] == 5) {
                         redirect('publisher');
+                    } else if ($user['role_id'] == 6) {
+                        redirect('participant');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password</div>');
