@@ -7,6 +7,8 @@ class Presenter extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->load->model('Myconference_model', 'myconference');
+        $this->load->library('tcpdf'); // Memuat library TCPDF
     }
 
     public function index()
@@ -52,6 +54,8 @@ class Presenter extends CI_Controller
 
         $this->form_validation->set_rules('topic', 'Topic', 'required|trim');
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
+        $this->form_validation->set_rules('abstract', 'Abstract', 'required|trim');
+
         $this->form_validation->set_rules('publish_journal', 'Publish Journal', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -84,6 +88,7 @@ class Presenter extends CI_Controller
                 'user_id' => $data['user']['id'],
                 'publish_journal' => $this->input->post('publish_journal'),
                 'topic' => $this->input->post('topic'),
+                'abstract' => $this->input->post('abstract'),
                 'journal_path' => $upload_journal,
                 'poster_path' => $upload_poster,
                 'is_paid' => "unpaid",
@@ -153,6 +158,37 @@ class Presenter extends CI_Controller
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your video has been updated!</div>');
             redirect('presenter/myconference');
+        }
+    }
+
+    public function view_pdf($submission_id)
+    {
+        // Mengambil data submission dari model
+        $submission = $this->myconference->getSubmissionById($submission_id);
+
+        if (empty($submission['abstract'])) {
+            // Set flash data to show modal
+            $this->session->set_flashdata('show_modal', true);
+            redirect('presenter/myconference');
+        } else {
+            // Generate PDF or provide download link
+            if ($submission) {
+                // Memuat konten PDF dari view (gunakan template PDF jika perlu)
+                $pdf_content = $this->load->view('presenter/abstract_pdf_template', $submission, true);
+
+                // Inisialisasi TCPDF
+                $pdf = new TCPDF();
+                $pdf->setPrintHeader(false);
+                $pdf->setPrintFooter(false);
+                $pdf->AddPage();
+                $pdf->writeHTML($pdf_content, true, false, true, false, '');
+
+                // Tampilkan PDF di browser
+                $pdf->Output('abstract_' . $submission_id . '.pdf', 'I'); // 'I' untuk menampilkan di browser
+            } else {
+                show_error('Submission tidak ditemukan', 404);
+            }
+            // ...
         }
     }
 }

@@ -87,71 +87,70 @@
             </div>
         </div>
     </div>
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Show the file name and preview of the selected file
+        document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+            var fileName = document.getElementById("payment_proof").files[0].name;
+            var nextSibling = e.target.nextElementSibling
+            nextSibling.innerText = fileName
+
+            previewFile();
+        });
+
+        function previewFile() {
+            var preview = document.getElementById('filePreview');
+            var file = document.getElementById('payment_proof').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function() {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+                document.getElementById('previewContainer').style.display = 'block';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                cancelPreview();
+            }
+        }
+
+        function cancelPreview() {
+            var preview = document.getElementById('filePreview');
+            var fileInput = document.getElementById('payment_proof');
+            var fileLabel = document.querySelector('.custom-file-label');
+
+            preview.src = "";
+            preview.style.display = 'none';
+            document.getElementById('previewContainer').style.display = 'none';
+            fileInput.value = "";
+            fileLabel.innerText = "Choose file...";
+        }
+    </script>
+
+    <style>
+        .custom-file-label::after {
+            content: "Browse";
+        }
+
+        .custom-file-input:lang(en)~.custom-file-label::after {
+            content: "Browse";
+        }
+
+        .custom-file-label {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 
 </div>
 <!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
-
-<!-- Include Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script>
-    // Show the file name and preview of the selected file
-    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-        var fileName = document.getElementById("payment_proof").files[0].name;
-        var nextSibling = e.target.nextElementSibling
-        nextSibling.innerText = fileName
-
-        previewFile();
-    });
-
-    function previewFile() {
-        var preview = document.getElementById('filePreview');
-        var file = document.getElementById('payment_proof').files[0];
-        var reader = new FileReader();
-
-        reader.onloadend = function() {
-            preview.src = reader.result;
-            preview.style.display = 'block';
-            document.getElementById('previewContainer').style.display = 'block';
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            cancelPreview();
-        }
-    }
-
-    function cancelPreview() {
-        var preview = document.getElementById('filePreview');
-        var fileInput = document.getElementById('payment_proof');
-        var fileLabel = document.querySelector('.custom-file-label');
-
-        preview.src = "";
-        preview.style.display = 'none';
-        document.getElementById('previewContainer').style.display = 'none';
-        fileInput.value = "";
-        fileLabel.innerText = "Choose file...";
-    }
-</script>
-
-<style>
-    .custom-file-label::after {
-        content: "Browse";
-    }
-
-    .custom-file-input:lang(en)~.custom-file-label::after {
-        content: "Browse";
-    }
-
-    .custom-file-label {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-</style>

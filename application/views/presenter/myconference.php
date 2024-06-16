@@ -3,6 +3,32 @@
     <!-- Page Heading -->
 
     <section class="content">
+        <?php if ($this->session->flashdata('show_modal')) : ?>
+            <!-- Modal -->
+            <div class="modal fade" id="abstractModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Informasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Anda belum mengisi abstract.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(document).ready(function() {
+                    $('#abstractModal').modal('show');
+                });
+            </script>
+        <?php endif; ?>
         <?php foreach ($dataSubmit as $submission) : ?>
             <div class="container-fluid">
                 <div class="card shadow mb-4">
@@ -66,7 +92,7 @@
                                 <i class="fa fa-save"></i>
                                 Certificate
                             </a>
-                            <a href="" class="btn btn-primary">Download Abstract</a>
+                            <a href="<?= base_url('presenter/view_pdf/') . $submission['id'] ?>" class="btn btn-primary">Download Abstract</a>
                             <a href="" class="btn btn-info">
                                 <i class="fa fa-save"></i>
                                 Submission LOA

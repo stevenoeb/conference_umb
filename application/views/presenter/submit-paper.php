@@ -34,13 +34,31 @@
                         </div>
                     </div>
                     <div class="col-md-12">
+
                         <div class="form-group">
                             <div class="col">
-                                <label for="Title">Title</label>
-                                <input type="text" class="form-control" name="title" id="title" value="" placeholder>
+                                <label for="title">Title</label>
+                                <textarea class="form-control" name="title" id="title" rows="4" placeholder=""></textarea>
                                 <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col">
+                                <label for="abstract">Abstract</label>
+                                <textarea class="form-control" name="abstract" id="abstract" rows="10" placeholder=""></textarea>
+                                <?= form_error('abstract', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <div class="col">
+                                <label for="Title">Title</label>
+                                <input type="text" class="form-control" name="title" id="title" value="" placeholder>
+                                
+                            </div>
+                        </div> -->
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
