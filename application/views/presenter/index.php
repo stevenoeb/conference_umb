@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-5 col-lg-3 text-center">
-                                <img src="<?= base_url('assets/img/profile/') . $user['image'] ?>" alt="User Pic" class="img-responsive rounded" style="width: 100%; height: auto">
+                                <img src="<?= base_url('assets/img/logo/LOGO.jpg') ?>" alt="User Pic" class="img-responsive rounded" style="width: 100%; height: auto">
                             </div>
                             <div class="col-md-9 col-lg-9">
                                 <br>
@@ -21,19 +21,19 @@
                                             <td>
                                                 <strong>Event Name</strong>
                                             </td>
-                                            <td>International Conference and Community Service</td>
+                                            <td>Accounting Conference on Sustainability and Technopreneurial International 2024</td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <strong>Conference Name</strong>
                                             </td>
-                                            <td>Educational Technology</td>
+                                            <td>Accounting Challenges and Opportunities in The Global Era</td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <strong>Category</strong>
                                             </td>
-                                            <td>Education</td>
+                                            <td>Accounting</td>
                                         </tr>
                                         <tr>
                                             <td>

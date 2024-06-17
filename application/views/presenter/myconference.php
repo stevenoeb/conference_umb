@@ -33,7 +33,7 @@
             <div class="container-fluid">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">International Conference</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Accounting Challenges and Opportunities in The Global Era</h6>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -59,7 +59,7 @@
                                         <tr>
                                             <td style="width:25%"><strong>Is Accepted</strong></td>
                                             <td>
-                                                <a class="badge badge-success text-light"><?= $submission['is_accept'] ?></a>
+                                                <a class="badge badge-danger text-light"><?= $submission['is_accept'] ?></a>
                                             </td>
                                         </tr>
                                         <tr>
