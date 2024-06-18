@@ -18,7 +18,7 @@
                     <p class="card-text"><strong>Email:</strong> <?= $user['email'] ?></p>
                     <p class="card-text"><strong>Phone:</strong> <?= $user['phone'] ?></p>
                     <p class="card-text"><strong>University:</strong> <?= $user['univ'] ?></p>
-                    <p class="card-text"><strong>Country:</strong> <?= $countries[$user['country']] ?></p>
+                    <p class="card-text"><strong>Country:</strong> <?= isset($countries[$user['country']]) ? $countries[$user['country']] : '' ?></p>
                     <p class="card-text"><small class="text-muted">Member since <?= date('d F Y', $user['date_created']) ?></small></p>
                 </div>
             </div>
