@@ -43,4 +43,15 @@ class Myconference_model extends CI_Model
 
         return $query->row_array(); // Mengembalikan satu baris data sebagai array
     }
+
+    public function savePaymentData($data)
+    {
+        $this->db->insert('payment', $data);
+    }
+
+    public function updateIsPaidStatus($conference_id)
+    {
+        $this->db->where('id', $conference_id);
+        $this->db->update('conference_submissions', ['is_paid' => 'pending']);
+    }
 }

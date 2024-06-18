@@ -35,6 +35,38 @@ class Presenter extends CI_Controller
         $user_id = $data['user']['id'];
         $data['dataSubmit'] = $this->myconference->getDataSubmitByUserId($user_id);
 
+        // Handle the form submission
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['payment_proof']['name']) && !empty($this->input->post('selected_submissions'))) {
+            $config['upload_path'] = './assets/data/pembayaran/';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';
+            $config['max_size'] = 2048; // 2MB
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('payment_proof')) {
+                $uploadData = $this->upload->data();
+                $image = $uploadData['file_name'];
+
+                // Save payment data for each selected submission
+                $selectedSubmissions = $this->input->post('selected_submissions');
+                foreach ($selectedSubmissions as $conference_id) {
+                    $paymentData = [
+                        'user_id' => $user_id,
+                        'image' => $image,
+                        'conference_id' => $conference_id
+                    ];
+                    $this->myconference->savePaymentData($paymentData);
+
+                    // Update is_paid status
+                    $this->myconference->updateIsPaidStatus($conference_id);
+                }
+
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Payment proof uploaded successfully!</div>');
+                redirect('presenter/payment');
+            } else {
+                $data['error'] = $this->upload->display_errors();
+            }
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -42,6 +74,7 @@ class Presenter extends CI_Controller
         $this->load->view('presenter/payment', $data);
         $this->load->view('templates/footer');
     }
+
 
     public function submitPaper()
     {

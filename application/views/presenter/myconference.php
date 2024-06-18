@@ -59,13 +59,23 @@
                                         <tr>
                                             <td style="width:25%"><strong>Is Accepted</strong></td>
                                             <td>
-                                                <a class="badge badge-danger text-light"><?= $submission['is_accept'] ?></a>
+                                                <?php if ($submission['is_accept'] == 'unaccept') : ?>
+                                                    <a class="badge badge-danger text-light"><?= $submission['is_accept'] ?></a>
+                                                <?php else : ?>
+                                                    <a class="badge badge-success text-light"><?= $submission['is_accept'] ?></a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="width:25%"><strong>Is Paid?</strong></td>
+                                            <td style="width:25%"><strong>Is Paid</strong></td>
                                             <td>
-                                                <a class="badge badge-danger text-light"><?= $submission['is_paid'] ?></a>
+                                                <?php if ($submission['is_paid'] == 'unpaid') : ?>
+                                                    <a class="badge badge-danger text-light"><?= $submission['is_paid'] ?></a>
+                                                <?php elseif ($submission['is_paid'] == 'pending') : ?>
+                                                    <a class="badge badge-warning text-light"><?= $submission['is_paid'] ?></a>
+                                                <?php else : ?>
+                                                    <a class="badge badge-success text-light"><?= $submission['is_paid'] ?></a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                         <tr>

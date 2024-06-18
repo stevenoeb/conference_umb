@@ -15,6 +15,26 @@
                     <button type="button" class="btn btn-danger btn-sm mt-2" onclick="cancelPreview()">Cancel</button>
                 </div>
             </div>
+
+            <!-- Submissions List with Checkboxes -->
+            <!-- Submissions List with Checkboxes -->
+            <div class="form-group">
+                <label>Select Submissions to Pay</label>
+                <ul>
+                    <?php foreach ($dataSubmit as $submission) : ?>
+                        <?php if ($submission['is_accept'] === 'accepted' && $submission['is_paid'] === 'unpaid') : ?>
+                            <li>
+                                <input type="checkbox" name="selected_submissions[]" value="<?= $submission['id'] ?>">
+                                <?= $submission['title'] ?> - 30,000 IDR
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+                <?php if (empty($dataSubmit)) : ?>
+                    <p>No submissions available for payment.</p>
+                <?php endif; ?>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
@@ -69,16 +89,14 @@
                             <?php
                             $totalAmount = 0;
                             foreach ($dataSubmit as $submission) :
-                                $totalAmount += 700000; // Price per title
+                                if ($submission['is_accept'] === 'accepted' && $submission['is_paid'] === 'no') {
+                                    $totalAmount += 30000; // Price per title
+                                    echo "<li>{$submission['title']} - 30,000 IDR</li>";
+                                }
+                            endforeach;
                             ?>
-                                <li><?= $submission['title'] ?> - 700,000 IDR</li>
-                            <?php endforeach; ?>
                         </ul>
-                        <?php if (empty($dataSubmit)) : ?>
-                            <p><strong>Total Amount:</strong> 0 IDR</p>
-                        <?php else : ?>
-                            <p><strong>Total Amount:</strong> <?= number_format($totalAmount, 0, ',', '.') ?> IDR</p>
-                        <?php endif; ?>
+                        <p><strong>Total Amount:</strong> <?= number_format($totalAmount, 0, ',', '.') ?> IDR</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -87,6 +105,7 @@
             </div>
         </div>
     </div>
+
     <!-- Include Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
