@@ -14,4 +14,25 @@ class Admin_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+
+    public function getAllPaper()
+    {
+        $query = "SELECT COUNT(id) AS totalPaper FROM conference_submissions";
+
+        return $this->db->query($query)->row_array();
+    }
+
+    public function getAllPresenter()
+    {
+        $query = "SELECT COUNT(id) AS presenter FROM user WHERE role_id=3";
+
+        return $this->db->query($query)->row_array();
+    }
+
+    public function getAllPeserta()
+    {
+        $query = "SELECT COUNT(id) AS peserta FROM user WHERE role_id=6";
+
+        return $this->db->query($query)->row_array();
+    }
 }
