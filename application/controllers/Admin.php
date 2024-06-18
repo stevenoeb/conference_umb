@@ -88,7 +88,7 @@ class Admin extends CI_Controller
 
     public function verify_payment()
     {
-        $data['title'] = 'Verify Payment';
+        $data['title'] = 'Payment Verification';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'payment');
@@ -119,6 +119,15 @@ class Admin extends CI_Controller
 
         $data['payment'] = $this->payment->getPaymentVerify($config['per_page'], $data['start'], $data['keyword']);
 
+        // Action
+        if ($this->input->post('accept')) {
+            $id = $this->input->post('id');
+            $this->db->set('is_paid', 'paid');
+            $this->db->where('id', $id);
+            $this->db->update('conference_submissions');
+            redirect('admin/verify_payment/' . $data['start']);
+        }
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -128,7 +137,7 @@ class Admin extends CI_Controller
 
     public function verify_article()
     {
-        $data['title'] = 'Verify Article';
+        $data['title'] = 'Article Verification';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'article');
@@ -159,6 +168,15 @@ class Admin extends CI_Controller
         }
 
         $data['articles'] = $this->article->getArticleVerify($config['per_page'], $data['start'], $data['keyword']);
+
+        // Action
+        if ($this->input->post('accept')) {
+            $id = $this->input->post('id');
+            $this->db->set('is_accept', 'accepted');
+            $this->db->where('id', $id);
+            $this->db->update('conference_submissions');
+            redirect('admin/verify_article/' . $data['start']);
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

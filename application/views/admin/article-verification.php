@@ -46,18 +46,28 @@
                             <?php endif; ?>
                             <?php foreach ($articles as $article) : ?>
                                 <tr>
-                                    <th scope="row"><?= ++$start; ?></th>
-                                    <td><?= $article['name'] ?></td>
-                                    <td><?= $article['title'] ?></td>
-                                    <td><?= $article['journal_path'] ?></td>
-                                    <td><a href="<?= $article['link_video'] ?>" target="_blank"><?= $article['link_video'] ?></a></td>
-                                    <td>
-                                        <span class="badge <?= ($article['is_accept'] == "unaccept") ? "badge-danger" : "badge-success" ?>"><?= $article['is_accept']; ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="#!" class="badge badge-info">Accept</a>
-                                        <a href="#!" class="badge badge-danger">Decline</a>
-                                    </td>
+                                    <form action="" method="POST">
+                                        <th scope="row">
+                                            <?= ++$start; ?>
+                                            <input type="hidden" name="id" value="<?= $article['id']; ?>">
+                                        </th>
+                                        <td><?= $article['name'] ?></td>
+                                        <td><?= $article['title'] ?></td>
+                                        <td><?= $article['journal_path'] ?></td>
+                                        <td><a href="<?= $article['link_video'] ?>" target="_blank"><?= $article['link_video'] ?></a></td>
+                                        <td>
+                                            <span class="badge <?= ($article['is_accept'] == "unaccept") ? "badge-danger" : "badge-success" ?>"><?= $article['is_accept']; ?></span>
+                                        </td>
+                                        <td>
+                                            <?php if ($article['is_accept'] == "accepted") : ?>
+                                                <a href="#!" class="badge badge-info d-none">Accept</a>
+                                                <!-- <a href="#!" class="badge badge-danger d-none">Decline</a> -->
+                                            <?php elseif ($article['is_accept'] == "unaccept") : ?>
+                                                <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
+                                                <!-- <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill" name="decline">Decline</button> -->
+                                            <?php endif; ?>
+                                        </td>
+                                    </form>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

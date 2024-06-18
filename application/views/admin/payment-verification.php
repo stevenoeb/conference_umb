@@ -34,24 +34,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?>
                         <?php foreach ($payment as $p) : ?>
                             <tr>
-                                <th scope="row"><?= $i++ ?></th>
-                                <td><?= $p['name'] ?></td>
-                                <td><?= $p['title'] ?></td>
-                                <td><?= $p['journal_path'] ?></td>
-                                <td><a href="" class="badge badge-pill badge-primary" data-toggle="modal" data-target="#paymentModal<?= $i; ?>">Lihat Bukti Pembayaran</a></td>
-                                <td>
-                                    <span class="badge <?= ($p['is_paid'] == "unpaid") ? "badge-danger" : "badge-success" ?>"><?= $p['is_paid']; ?></span>
-                                </td>
-                                <td>
-                                    <a href="#!" class="badge badge-info">Accept</a>
-                                    <a href="#!" class="badge badge-danger">Decline</a>
-                                </td>
+                                <form action="" method="POST">
+                                    <th scope="row">
+                                        <?= ++$start; ?>
+                                        <input type="hidden" name="id" value="<?= $p['conference_id']; ?>">
+                                    </th>
+                                    <td><?= $p['name'] ?></td>
+                                    <td><?= $p['title'] ?></td>
+                                    <td><?= $p['journal_path'] ?></td>
+                                    <td><a href="" class="badge badge-pill badge-primary" data-toggle="modal" data-target="#paymentModal<?= $start; ?>">Lihat Bukti Pembayaran</a></td>
+                                    <td>
+                                        <span class="badge <?= ($p['is_paid'] == "unpaid") ? "badge-danger" : "badge-success" ?>"><?= $p['is_paid']; ?></span>
+                                    </td>
+                                    <td>
+                                        <?php if ($p['is_paid'] == "paid") : ?>
+                                            <a href="#!" class="badge badge-info d-none">Accept</a>
+                                            <!-- <a href="#!" class="badge badge-danger d-none">Decline</a> -->
+                                        <?php elseif ($p['is_paid'] == "unpaid") : ?>
+                                            <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
+                                            <!-- <a href="#!" class="badge badge-danger">Decline</a> -->
+                                        <?php endif; ?>
+                                    </td>
+                                </form>
                             </tr>
 
-                            <div class="modal fade" id="paymentModal<?= $i; ?>" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="paymentModal<?= $start; ?>" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
