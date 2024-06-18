@@ -7,12 +7,15 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-12">
-                    <div id="dataTable_filter" class="dataTables_filter">
-                        <label>Search:
-                            <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dataTable">
-                        </label>
-                    </div>
+                <div class="col-sm-12 col-md-5">
+                    <form action="" method="POST">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" placeholder="Search Name/Title..." autocomplete="off" autofocus>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="row overflow-auto mt-4">
@@ -70,23 +73,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex row justify-content-between mt-4">
-                <div class="col-sm-12 col-md-6 d-flex justify-content-start">
-                    <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                </div>
-                <div class="col-sm-12 col-md-6 d-flex justify-content-end">
-                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                        <ul class="pagination">
-                            <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                            <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                            <li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                            <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="d-flex row justify-content-between align-items-center px-2 mt-4">
+                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing <?= $total_row; ?> data</div>
+                <?= $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>
