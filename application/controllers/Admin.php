@@ -117,13 +117,13 @@ class Admin extends CI_Controller
         }
 
         $config['base_url'] = base_url("admin/verify_article");
-        // $config['total_rows'] = $this->article->countAllArticles();
         $this->db->join('user', 'user.id = conference_submissions.user_id');
         $this->db->like('title', $data['keyword']);
         $this->db->or_like('name', $data['keyword']);
         $this->db->from('conference_submissions');
         $config['total_rows'] = $this->db->count_all_results();
         $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
         $this->pagination->initialize($config);
 
         $data['start'] = $this->uri->segment(3);

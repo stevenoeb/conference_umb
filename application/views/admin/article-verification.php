@@ -35,6 +35,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php if (empty($articles)) : ?>
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="alert alert-danger" role="alert">
+                                            Data Not Found!
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
                             <?php foreach ($articles as $article) : ?>
                                 <tr>
                                     <th scope="row"><?= ++$start; ?></th>
@@ -55,7 +64,8 @@
                     </table>
                 </div>
             </div>
-            <div class="mt-4">
+            <div class="d-flex row justify-content-between align-items-center px-2 mt-4">
+                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing <?= $total_row; ?> data</div>
                 <?= $this->pagination->create_links(); ?>
             </div>
         </div>
