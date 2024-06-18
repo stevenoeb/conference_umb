@@ -1,14 +1,25 @@
+<!-- views/olimpiade/upload.php -->
+
 <div class="container">
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    Upload Video Link
+                </div>
+                <div class="card-body">
+                    <?php echo validation_errors('<div class="alert alert-danger">', '</div>'); ?>
+                    <?php echo $this->session->flashdata('message'); ?>
 
-    <?= $this->session->flashdata('message'); ?>
-
-    <form action="<?= base_url('olimpiade/upload'); ?>" method="post">
-        <div class="form-group">
-            <label for="video_link">Video Link</label>
-            <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Enter video link (e.g., YouTube)">
-            <?= form_error('video_link', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <?php echo form_open('olimpiade/upload'); ?>
+                    <div class="form-group">
+                        <label for="video_link">Video Link</label>
+                        <input type="text" name="video_link" id="video_link" class="form-control" placeholder="Enter video link">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <?php echo form_close(); ?>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>

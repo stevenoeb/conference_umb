@@ -21,23 +21,11 @@ class Olimpiade extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function insert_video_link($video_link)
-    {
-        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $data = array(
-            'user_id' => $user['id'],
-            'video_link' => $video_link,
-            'upload_date' => date('Y-m-d H:i:s')
-        );
-
-        return $this->db->insert('upload', $data);
-    }
-
     public function upload()
     {
         $data['title'] = 'Upload Video Link';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Olimpiade_model', 'olimpiade');
 
         $this->form_validation->set_rules('video_link', 'Video Link', 'required|valid_url');
 
@@ -49,7 +37,7 @@ class Olimpiade extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $video_link = $this->input->post('video_link');
-            $this->insert_video_link($video_link);
+            $this->olimpiade->insert_video_link($video_link);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Link video berhasil diupload!</div>');
             redirect('olimpiade');
