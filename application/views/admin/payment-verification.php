@@ -59,7 +59,7 @@
                                     </td>
                                     <td>
                                         <?php if ($p['is_paid'] == "paid") : ?>
-                                            <a href="#!" class="badge badge-info d-none">Accept</a>
+                                            <input type="submit" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
                                             <!-- <a href="#!" class="badge badge-danger d-none">Decline</a> -->
                                         <?php elseif ($p['is_paid'] == "unpaid") : ?>
                                             <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
