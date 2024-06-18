@@ -34,6 +34,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php if (empty($payment)) : ?>
+                            <tr>
+                                <td colspan="7">
+                                    <div class="alert alert-danger" role="alert">
+                                        Data Not Found!
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                         <?php foreach ($payment as $p) : ?>
                             <tr>
                                 <form action="" method="POST">
