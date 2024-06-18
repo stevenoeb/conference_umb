@@ -7,6 +7,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->session->unset_userdata('keyword');
     }
 
     public function index()
@@ -16,8 +17,8 @@ class Admin extends CI_Controller
 
         $this->load->model('Admin_model', 'admin');
         $data['paper'] = $this->admin->countAllArticles();
-        $data['presenter'] = $this->admin->getAllPresenter();
-        $data['peserta'] = $this->admin->getAllPeserta();
+        $data['presenter'] = $this->admin->countAllPresenter();
+        $data['peserta'] = $this->admin->countAllPeserta();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -91,7 +92,32 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'payment');
-        $data['payment'] = $this->payment->getPaymentVerify();
+
+        // Pagination
+        $this->load->library('pagination');
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $config['base_url'] = base_url("admin/verify_payment");
+        $this->db->join('conference_submissions cs', 'cs.id = payment.conference_id');
+        $this->db->join('user', 'user.id = cs.user_id');
+        $this->db->like('cs.is_accept', 'accepted');
+        $this->db->from('payment');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+
+        $data['payment'] = $this->payment->getPaymentVerify($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -113,7 +139,8 @@ class Admin extends CI_Controller
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
         } else {
-            $data['keyword'] = $this->session->userdata('keyword');
+            // $data['keyword'] = $this->session->userdata('keyword');
+            $data['keyword'] = "";
         }
 
         $config['base_url'] = base_url("admin/verify_article");
@@ -130,6 +157,7 @@ class Admin extends CI_Controller
         if (!$data['start']) {
             $data['start'] = 0;
         }
+
         $data['articles'] = $this->article->getArticleVerify($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
