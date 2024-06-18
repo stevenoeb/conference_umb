@@ -5,7 +5,7 @@ class Admin_model extends CI_Model
 {
     public function getPaymentVerify($limit, $start, $keyword = null)
     {
-        $this->db->select('payment.*, user.name, cs.id, cs.user_id, cs.topic, cs.title, cs.journal_path, cs.is_paid, cs.is_accept');
+        $this->db->select('payment.*, user.name, cs.user_id, cs.topic, cs.title, cs.journal_path, cs.is_paid, cs.is_accept');
         $this->db->join('conference_submissions cs', 'cs.id = payment.conference_id', 'inner');
         $this->db->join('user', 'user.id = cs.user_id', 'inner');
         $this->db->like('is_accept', 'accepted');
@@ -20,6 +20,7 @@ class Admin_model extends CI_Model
 
     public function getArticleVerify($limit, $start, $keyword = null)
     {
+        $this->db->select('conference_submissions.*, user.name');
         $this->db->join('user', 'user.id = conference_submissions.user_id', 'inner');
         if ($keyword) {
             $this->db->like('title', $keyword);
@@ -37,9 +38,6 @@ class Admin_model extends CI_Model
 
     public function countAllAcceptedArticles()
     {
-        // $this->db->like('conference_submissions.is_accept', 'accepted');
-        // return $this->db->get("conference_submissions")->num_rows();
-
         $query = "SELECT COUNT(id) FROM conference_submissions WHERE is_accept LIKE '%accepted%'";
 
         return $this->db->query($query)->row_array();
