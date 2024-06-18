@@ -15,7 +15,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'admin');
-        $data['paper'] = $this->admin->getAllPaper();
+        $data['paper'] = $this->admin->countAllArticles();
         $data['presenter'] = $this->admin->getAllPresenter();
         $data['peserta'] = $this->admin->getAllPeserta();
 
@@ -91,12 +91,51 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'payment');
-        $data['payment'] = $this->payment->getPayment();
+        $data['payment'] = $this->payment->getPaymentVerify();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/payment-verification', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function verify_article()
+    {
+        $data['title'] = 'Verify Article';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Admin_model', 'article');
+
+        // Pagination
+        $this->load->library('pagination');
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $config['base_url'] = base_url("admin/verify_article");
+        // $config['total_rows'] = $this->article->countAllArticles();
+        $this->db->join('user', 'user.id = conference_submissions.user_id');
+        $this->db->like('title', $data['keyword']);
+        $this->db->or_like('name', $data['keyword']);
+        $this->db->from('conference_submissions');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+        $data['articles'] = $this->article->getArticleVerify($config['per_page'], $data['start'], $data['keyword']);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/article-verification', $data);
         $this->load->view('templates/footer');
     }
 }
