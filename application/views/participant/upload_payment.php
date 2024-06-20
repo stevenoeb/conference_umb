@@ -3,7 +3,7 @@
     <div class="container mt-5">
 
         <!-- Payment Proof Upload Form -->
-        <form action="<?= base_url('olimpiade/upload_payment') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('participant/upload_payment') ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="payment_proof">Upload Payment Proof</label>
                 <div class="custom-file">
@@ -26,33 +26,32 @@
             Total Bill Info
         </button>
 
-        <!-- Bank Info Modal -->
-        <div class="modal fade" id="bankInfoModal" tabindex="-1" aria-labelledby="bankInfoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="bankInfoModalLabel">Bank Information</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- List of banks -->
-                        <ul>
-                            <li>Bank A - Account Number: XXXXXXX</li>
-                            <li>Bank B - Account Number: XXXXXXX</li>
-                            <li>Bank C - Account Number: XXXXXXX</li>
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+    </div>
+
+    <!-- Bank Info Modal -->
+    <div class="modal fade" id="bankInfoModal" tabindex="-1" aria-labelledby="bankInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bankInfoModalLabel">Bank Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- List of banks -->
+                    <ul>
+                        <li>Bank A - Account Number: XXXXXXX</li>
+                        <li>Bank B - Account Number: XXXXXXX</li>
+                        <li>Bank C - Account Number: XXXXXXX</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
-
     </div>
-
 
     <!-- Bill Info Modal -->
     <div class="modal fade" id="billInfoModal" tabindex="-1" aria-labelledby="billInfoModalLabel" aria-hidden="true">
