@@ -173,6 +173,7 @@ class Admin extends CI_Controller
         if ($this->input->post('accept')) {
             $id = $this->input->post('id');
             $this->db->set('is_accept', 'accepted');
+            $this->db->set('is_paid', 'pending');
             $this->db->where('id', $id);
             $this->db->update('conference_submissions');
             redirect('admin/verify_article/' . $data['start']);
