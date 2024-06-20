@@ -56,4 +56,13 @@ class Admin_model extends CI_Model
 
         return $this->db->query($query)->row_array();
     }
+
+    public function getOlimpiadeSubmissions()
+    {
+        $this->db->select('olimpiade_submissions.*, user.name');
+        $this->db->from('olimpiade_submissions');
+        $this->db->join('user', 'olimpiade_submissions.user_id = user.id');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

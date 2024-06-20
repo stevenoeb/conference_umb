@@ -184,4 +184,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/article-verification', $data);
         $this->load->view('templates/footer');
     }
+    public function olimpiade()
+    {
+        $data['title'] = 'Olimpiade';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Admin_model', 'admin');
+        $data['submissions'] = $this->admin->getOlimpiadeSubmissions();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/olimpiade', $data);
+        $this->load->view('templates/footer');
+    }
 }
