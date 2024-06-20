@@ -97,7 +97,7 @@
                                 <i class="fa fa-camera"></i>
                                 Upload Link Video Presentation
                             </button>
-                            <a href="" class="btn btn-success">Fullpaper</a>
+                            <!-- <a href="" class="btn btn-success">Fullpaper</a> -->
                             <a class="btn btn-info text-light" data-toggle="modal" data-target="#modal-edit" data-target="#certificateModal">
                                 <i class="fa fa-save"></i>
                                 Certificate

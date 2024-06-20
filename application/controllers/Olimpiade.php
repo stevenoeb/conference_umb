@@ -49,7 +49,7 @@ class Olimpiade extends CI_Controller
         $data['title'] = 'Upload Payment Proof';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $config['upload_path'] = './uploads/';
+        $config['upload_path'] = './assets/data/pembayaran_olimpiade';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
         $config['max_size'] = 2048; // 2 MB
 
@@ -66,9 +66,9 @@ class Olimpiade extends CI_Controller
             $file_data = $this->upload->data();
             $file_name = $file_data['file_name'];
 
-            $this->db->insert('payments', [
+            $this->db->insert('payment_olimpiade', [
                 'user_id' => $data['user']['id'],
-                'file_name' => $file_name,
+                'image' => $file_name,
                 'upload_date' => date('Y-m-d H:i:s')
             ]);
 
