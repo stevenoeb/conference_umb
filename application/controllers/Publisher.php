@@ -43,7 +43,7 @@ class Publisher extends CI_Controller
             $data['start'] = 0;
         }
 
-        $data['submitPaper'] = $this->conference->getSubmitPaper($config['per_page'], $data['start'], $data['keyword']);
+        $data['submitPaper'] = $this->conference->getAllArticles($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
