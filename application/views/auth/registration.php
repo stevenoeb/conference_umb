@@ -21,10 +21,10 @@
                             <div class="form-group">
                                 <select class="form-control" style="font-size:0.8rem; border-radius: 10rem; height: 3rem; padding: 0 1rem" id="role_id" name="role_id">
                                     <option selected>Open this select menu</option>
-                                    <option value="2">User</option>
                                     <option value="3">Presenter</option>
                                     <option value="4">Olimpiade</option>
-                                    <option value="5">Publisher</option>
+                                    <option value="6">Participant</option>
+
                                 </select>
                                 <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>

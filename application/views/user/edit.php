@@ -29,6 +29,23 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="univ" class="col-sm-2 col-form-label">University</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="univ" name="univ" value="<?= $user['univ'] ?>">
+                    <?= form_error('univ', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="country" class="col-sm-2 col-form-label">Country</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="country" name="country">
+                        <?php foreach ($countries as $code => $name) : ?>
+                            <option value="<?= $code ?>" <?= $user['country'] == $code ? 'selected' : '' ?>><?= $name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <div class="col-sm-2">Picture</div>
                 <div class="col-sm-10">
                     <div class="row">

@@ -11,7 +11,7 @@
   <!-- Favicons -->
   <link href="<?= base_url('assets/img/apple-touch-icon.png'); ?>" rel="apple-touch-icon">
   <link href="<?= base_url('assets/img/logo/LOGO.jpg'); ?>" rel="icon">
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
 
@@ -27,7 +27,7 @@
   <!-- Main Stylesheet File -->
   <link href="<?= base_url('assets/css/mainstyle.css'); ?>" rel="stylesheet">
   <link href="<?= base_url('assets/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
-  
+
   <!-- =======================================================
     Theme Name: TheEvent
     Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
@@ -42,35 +42,35 @@
     Header
   ============================-->
   <!-- <header id="header"> -->
-    <!-- <div class="container"> -->
+  <!-- <div class="container"> -->
 
-      <!-- <div id="logo" class="pull-left"> -->
-        <!-- Uncomment below if you prefer to use a text logo -->
-        <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-        <!-- <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a> -->
-      <!-- </div> -->
+  <!-- <div id="logo" class="pull-left"> -->
+  <!-- Uncomment below if you prefer to use a text logo -->
+  <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
+  <!-- <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a> -->
+  <!-- </div> -->
 
-      <!-- <nav id="nav-menu-container"> -->
-        <!-- <ul class="nav-menu"> -->
-          <!-- <li class="menu-active"><a href="#intro">Home</a></li> -->
-          <!-- <li><a href="#about">About</a></li> -->
-          <!-- <li><a href="#speakers">Speakers</a></li> -->
-          <!-- <li><a href="#schedule">Schedule</a></li> -->
-          <!-- <li><a href="#venue">Venue</a></li> -->
-          <!-- <li><a href="#hotels">Hotels</a></li> -->
-          <!-- <li><a href="#gallery">Gallery</a></li> -->
-          <!-- <li><a href="#sponsors">Sponsors</a></li> -->
-          <!-- <li><a href="#contact">Contact</a></li> -->
-          <!-- <li class="buy-tickets"><a href="<?= base_url('auth/registration'); ?>">Registration</a></li> -->
-        <!-- </ul> -->
-      <!-- </nav> #nav-menu-container --> 
-    <!-- </div> -->
+  <!-- <nav id="nav-menu-container"> -->
+  <!-- <ul class="nav-menu"> -->
+  <!-- <li class="menu-active"><a href="#intro">Home</a></li> -->
+  <!-- <li><a href="#about">About</a></li> -->
+  <!-- <li><a href="#speakers">Speakers</a></li> -->
+  <!-- <li><a href="#schedule">Schedule</a></li> -->
+  <!-- <li><a href="#venue">Venue</a></li> -->
+  <!-- <li><a href="#hotels">Hotels</a></li> -->
+  <!-- <li><a href="#gallery">Gallery</a></li> -->
+  <!-- <li><a href="#sponsors">Sponsors</a></li> -->
+  <!-- <li><a href="#contact">Contact</a></li> -->
+  <!-- <li class="buy-tickets"><a href="<?= base_url('auth/registration'); ?>">Registration</a></li> -->
+  <!-- </ul> -->
+  <!-- </nav> #nav-menu-container -->
+  <!-- </div> -->
   <!-- </header>#header -->
 
   <!--==========================
     Intro Section
   ============================-->
-  
+
   <section id="intro">
     <div class="intro-container wow fadeIn">
       <div class="logo-container" style="display: flex; align-items: center; justify-content: center;">
@@ -80,8 +80,7 @@
       </div>
       <h1 class="mb-4 pb-0">Accounting Conference<br><span style="color: #3DD99E;">on Sustainability </span>and Technopreneurial (ACST):<br>1st International Series.</h1>
       <p class="mb-4 pb-0">July 3rd & 19th 2024, Muhammadiyah University of Bandung , Indonesia</p>
-      <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
-        data-autoplay="true"></a>
+      <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
       <a href="#about" class="about-btn scrollto">About The Event</a>
     </div>
   </section>
@@ -94,8 +93,8 @@
     <section id="about" class="wow fadeInUp">
       <div class="container">
         <div class="aboutnav">
-          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
-          <a href="<?= base_url('auth/comingsoon'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
+          <a href="<?= base_url('auth/registration'); ?>" class="navigasion"><img src="assets/img/person_add.png" alt="Register Icon">Register</a>
+          <a href="<?= base_url('auth/login'); ?>" class="navigasion"><img src="assets/img/login.png" alt="Login Icon"> Login</a>
           <a href="#schedule" class="navigasion"><img src="assets/img/calendar.png" alt="Schedule Icon"> Schedule</a>
         </div>
       </div>
@@ -116,13 +115,13 @@
           <h2>Background</h2>
           <h3 class="judul">“Accounting Challenges and Opportunities in the Global Era”</h3>
         </div>
-      <p>Various efforts are needed to improve the learning process through seminar activities to build a conducive academic atmosphere, especially for academics. 
-        International seminars that are held will not only contribute to the field of science but can also enhance the performance of universities which ultimately become world-class universities. 
-        Event organizing of the Accounting Conference on Sustainability and Technopreneurial (ACST): 1st International Series by the Accounting Study Program of 
-        Muhammadiyah University of Bandung and Muhammadiyah University of Sidoarjo is one of the efforts to build the academic. atmosphere. It is not only intended for lecturers but also for all students. 
-        This activity is also developed with the Join Seminar program to increase the publication of lecturers and students. As well as accounting competitions thatcan also increase student recognition or achievement at the international level.
+        <p>Various efforts are needed to improve the learning process through seminar activities to build a conducive academic atmosphere, especially for academics.
+          International seminars that are held will not only contribute to the field of science but can also enhance the performance of universities which ultimately become world-class universities.
+          Event organizing of the Accounting Conference on Sustainability and Technopreneurial (ACST): 1st International Series by the Accounting Study Program of
+          Muhammadiyah University of Bandung and Muhammadiyah University of Sidoarjo is one of the efforts to build the academic. atmosphere. It is not only intended for lecturers but also for all students.
+          This activity is also developed with the Join Seminar program to increase the publication of lecturers and students. As well as accounting competitions thatcan also increase student recognition or achievement at the international level.
 
-      </p>
+        </p>
       </div>
     </section>
 
@@ -316,7 +315,7 @@
                 <p>Opening speech from Prof. Dr. Ir. Herry Suhardiyanto, M.Sc., IPU.</p>
               </div>
             </div>
-            
+
 
             <div class="row schedule-item">
               <div class="col-md-2"><time>08.55 - 09.10</time></div>
@@ -451,16 +450,16 @@
 
         <div class="row no-gutters">
           <div class="col-lg-6 venue-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6181133131918!2d107.70586387573965!3d-6.936162567898753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e87f933b6c55%3A0x8481a5df48e2a169!2sUniversitas%20Muhammadiyah%20Bandung!5e0!3m2!1sid!2sid!4v1717543511681!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6181133131918!2d107.70586387573965!3d-6.936162567898753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e87f933b6c55%3A0x8481a5df48e2a169!2sUniversitas%20Muhammadiyah%20Bandung!5e0!3m2!1sid!2sid!4v1717543511681!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
 
           <div class="col-lg-6 venue-info">
             <div class="row justify-content-center">
               <div class="col-11 col-lg-8">
                 <h3>Accounting Conference on Sustainability and Technopreneurial (ACST) 2024</h3>
-                <p>Lecturers and students around 400 participants from several universities 
-                  participated in various series of events to develop the potential of participants 
-                  in the field of accounting through the Accounting Conference on Sustainability 
+                <p>Lecturers and students around 400 participants from several universities
+                  participated in various series of events to develop the potential of participants
+                  in the field of accounting through the Accounting Conference on Sustainability
                   and Technopreneurial (ACST): 1 st International Series.
                 </p>
               </div>
@@ -534,10 +533,10 @@
               <a href="assets/img/venue-gallery/8.jpg" class="venobox" data-gall="venue-gallery">
                 <img src="assets/img/venue-gallery/8.jpg" alt="" class="img-fluid">
               </a> -->
-            </div>
-          </div>
-
         </div>
+      </div>
+
+      </div>
       </div>
 
     </section>
@@ -793,8 +792,8 @@
               </div>
             </div>
           </div> -->
-          <!-- Pro Tier -->
-          <!-- <div class="col-lg-4">
+    <!-- Pro Tier -->
+    <!-- <div class="col-lg-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title text-muted text-uppercase text-center">Premium Access</h5>
@@ -820,8 +819,8 @@
 
       </div> -->
 
-      <!-- Modal Order Form -->
-      <!-- <div id="buy-ticket-modal" class="modal fade">
+    <!-- Modal Order Form -->
+    <!-- <div id="buy-ticket-modal" class="modal fade">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">

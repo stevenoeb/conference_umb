@@ -31,4 +31,27 @@ class Myconference_model extends CI_Model
         $this->db->where('conference_submissions.user_id', $user_id);
         return $this->db->get()->result_array();
     }
+
+    public function getSubmissionById($submission_id)
+    {
+        // Query untuk mengambil data submission dan informasi user terkait
+        $this->db->select('cs.*, u.name as user_name'); // Ambil kolom name dari tabel user sebagai user_name
+        $this->db->from('conference_submissions cs');
+        $this->db->join('user u', 'u.id = cs.user_id'); // Sesuaikan dengan kolom yang sesuai
+        $this->db->where('cs.id', $submission_id);
+        $query = $this->db->get();
+
+        return $query->row_array(); // Mengembalikan satu baris data sebagai array
+    }
+
+    public function savePaymentData($data)
+    {
+        $this->db->insert('payment', $data);
+    }
+
+    public function updateIsPaidStatus($conference_id)
+    {
+        $this->db->where('id', $conference_id);
+        $this->db->update('conference_submissions', ['is_paid' => 'pending']);
+    }
 }

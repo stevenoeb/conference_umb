@@ -7,12 +7,18 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->session->unset_userdata('keyword');
     }
 
     public function index()
     {
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Admin_model', 'admin');
+        $data['paper'] = $this->admin->countAllArticles();
+        $data['presenter'] = $this->admin->countAllPresenter();
+        $data['peserta'] = $this->admin->countAllPeserta();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -82,16 +88,114 @@ class Admin extends CI_Controller
 
     public function verify_payment()
     {
-        $data['title'] = 'Verify Payment';
+        $data['title'] = 'Payment Verification';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'payment');
-        $data['payment'] = $this->payment->getPayment();
+
+        // Pagination
+        $this->load->library('pagination');
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $config['base_url'] = base_url("admin/verify_payment");
+        $this->db->join('conference_submissions cs', 'cs.id = payment.conference_id');
+        $this->db->join('user', 'user.id = cs.user_id');
+        $this->db->like('cs.is_accept', 'accepted');
+        $this->db->from('payment');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+
+        $data['payment'] = $this->payment->getPaymentVerify($config['per_page'], $data['start'], $data['keyword']);
+
+        // Action
+        if ($this->input->post('accept')) {
+            $id = $this->input->post('id');
+            $this->db->set('is_paid', 'paid');
+            $this->db->where('id', $id);
+            $this->db->update('conference_submissions');
+            redirect('admin/verify_payment/' . $data['start']);
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/payment-verification', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function verify_article()
+    {
+        $data['title'] = 'Article Verification';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Admin_model', 'article');
+
+        // Pagination
+        $this->load->library('pagination');
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            // $data['keyword'] = $this->session->userdata('keyword');
+            $data['keyword'] = "";
+        }
+
+        $config['base_url'] = base_url("admin/verify_article");
+        $this->db->join('user', 'user.id = conference_submissions.user_id');
+        $this->db->like('title', $data['keyword']);
+        $this->db->or_like('name', $data['keyword']);
+        $this->db->from('conference_submissions');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+
+        $data['articles'] = $this->article->getArticleVerify($config['per_page'], $data['start'], $data['keyword']);
+
+        // Action
+        if ($this->input->post('accept')) {
+            $id = $this->input->post('id');
+            $this->db->set('is_accept', 'accepted');
+            $this->db->where('id', $id);
+            $this->db->update('conference_submissions');
+            redirect('admin/verify_article/' . $data['start']);
+        }
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/article-verification', $data);
+        $this->load->view('templates/footer');
+    }
+    public function olimpiade()
+    {
+        $data['title'] = 'Olimpiade';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Admin_model', 'admin');
+        $data['submissions'] = $this->admin->getOlimpiadeSubmissions();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/olimpiade', $data);
         $this->load->view('templates/footer');
     }
 }

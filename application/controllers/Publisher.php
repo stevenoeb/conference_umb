@@ -8,16 +8,42 @@ class Publisher extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->helper('download');
+        $this->session->unset_userdata('keyword');
     }
 
     public function index()
     {
-        $data['title'] = 'Publisher';
+        $data['title'] = 'List Of Articles';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
         $this->load->model('Conference_model', 'conference');
 
-        $data['submitPaper'] = $this->conference->getSubmitPaper();
-        $data['conference'] = $this->db->get('user')->result_array();
+        // Pagination
+        $this->load->library('pagination');
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            // $data['keyword'] = $this->session->userdata('keyword');
+            $data['keyword'] = "";
+        }
+
+        $config['base_url'] = base_url("publisher/index");
+        $this->db->join('user', 'user.id = conference_submissions.user_id');
+        $this->db->like('title', $data['keyword']);
+        $this->db->or_like('name', $data['keyword']);
+        $this->db->from('conference_submissions');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+
+        $data['submitPaper'] = $this->conference->getAllArticles($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
