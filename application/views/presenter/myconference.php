@@ -38,7 +38,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2 col-lg-3 text-center">
-                                <img src="" alt="User Pic" class="image-responsive-rounded" style="width:75%; height: auto">
+                                <!-- <img src="" alt="User Pic" class="image-responsive-rounded" style="width:75%; height: auto"> -->
+                                <img src="<?= base_url('assets/img/profile/') . $user['image'] ?>" class="img-fluid rounded-start" alt="Profile Picture">
                             </div>
                             <div class="col-md-9 col-lg-9">
                                 <br>

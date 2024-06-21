@@ -31,39 +31,9 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <strong>Category</strong>
+                                                <strong>Date</strong>
                                             </td>
-                                            <td>Accounting</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong>Published By</strong>
-                                            </td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong>Indexed In</strong>
-                                            </td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong>Reviewing Abstract</strong>
-                                            </td>
-                                            <td>International Conference and Community Service</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong>Reviewing Fullpaper</strong>
-                                            </td>
-                                            <td>International Conference and Community Service</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <strong>Presentatione</strong>
-                                            </td>
-                                            <td>International Conference and Community Service</td>
+                                            <td>July 3rd & 19th 2024</td>
                                         </tr>
 
                                     </tbody>
