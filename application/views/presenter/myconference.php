@@ -131,6 +131,7 @@
     <!-- /.container-fluid -->
 
 </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="newVideoModal" tabindex="-1" aria-labelledby="newVideoModalLabel" aria-hidden="true">

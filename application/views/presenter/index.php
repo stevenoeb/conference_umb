@@ -41,36 +41,6 @@
                                         </td>
                                         <td>Accounting</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Published By</strong>
-                                        </td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Indexed In</strong>
-                                        </td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Reviewing Abstract</strong>
-                                        </td>
-                                        <td>International Conference and Community Service</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Reviewing Fullpaper</strong>
-                                        </td>
-                                        <td>International Conference and Community Service</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Presentatione</strong>
-                                        </td>
-                                        <td>International Conference and Community Service</td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
