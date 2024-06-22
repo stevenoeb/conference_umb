@@ -42,9 +42,6 @@
         <button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target="#bankInfoModal">
             Bank Information
         </button>
-        <button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target="#billInfoModal">
-            Total Bill Info
-        </button>
 
         <!-- Bank Info Modal -->
         <div class="modal fade" id="bankInfoModal" tabindex="-1" aria-labelledby="bankInfoModalLabel" aria-hidden="true">
@@ -59,9 +56,7 @@
                     <div class="modal-body">
                         <!-- List of banks -->
                         <ul>
-                            <li>Bank A - Account Number: XXXXXXX</li>
-                            <li>Bank B - Account Number: XXXXXXX</li>
-                            <li>Bank C - Account Number: XXXXXXX</li>
+                            <li>Bank BJB Syariah 5430-2060-25230 (a.n. Prodi Akuntansi UMBandung)</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -72,38 +67,7 @@
         </div>
 
         <!-- Bill Info Modal -->
-        <div class="modal fade" id="billInfoModal" tabindex="-1" aria-labelledby="billInfoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="billInfoModalLabel">Total Bill Info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- User's name and list of submitted titles -->
-                        <p><strong>Name:</strong> <?= $user['name'] ?></p>
-                        <p><strong>Submitted Titles:</strong></p>
-                        <ul>
-                            <?php
-                            $totalAmount = 0;
-                            foreach ($dataSubmit as $submission) :
-                                if ($submission['is_accept'] === 'accepted' && $submission['is_paid'] === 'no') {
-                                    $totalAmount += 30000; // Price per title
-                                    echo "<li>{$submission['title']} - 30,000 IDR</li>";
-                                }
-                            endforeach;
-                            ?>
-                        </ul>
-                        <p><strong>Total Amount:</strong> <?= number_format($totalAmount, 0, ',', '.') ?> IDR</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </div>

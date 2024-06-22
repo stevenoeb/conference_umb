@@ -52,7 +52,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="custom-file">
-                                <label for="journal_path">File FULLPAPER (Format <span class="text-monospace font-weight-bold">DOCX, PDF, DOC</span> Max size : 128MB)</label>
+                                <label for="journal_path">* File FULLPAPER (Format <span class="text-monospace font-weight-bold">DOCX, PDF, DOC</span> Max size : 128MB)</label>
                                 <input type="file" class="form-control" name="journal_path" id="journal_path" style="padding-bottom: 35px">
                                 <?= form_error('journal_path', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
@@ -61,7 +61,7 @@
                     <div class=" col-md-12">
                         <div class="form-group">
                             <div class="custom-file">
-                                <label for="poster_path">Poster</label>
+                                <label for="poster_path">Poster (Format <span class="text-monospace font-weight-bold">JPG, JPEG, PNG</span> )</label>
                                 <input type="file" class="form-control" name="poster_path" id="poster_path" style="padding-bottom: 35px">
                                 <?= form_error('poster_path', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>

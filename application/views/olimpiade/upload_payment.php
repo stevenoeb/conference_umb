@@ -39,9 +39,7 @@
                     <div class="modal-body">
                         <!-- List of banks -->
                         <ul>
-                            <li>Bank A - Account Number: XXXXXXX</li>
-                            <li>Bank B - Account Number: XXXXXXX</li>
-                            <li>Bank C - Account Number: XXXXXXX</li>
+                            <li>Bank BJB Syariah 5430-2060-25230 (a.n. Prodi Akuntansi UMBandung)</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
