@@ -172,6 +172,21 @@ class Presenter extends CI_Controller
         }
     }
 
+    public function delete_submission($id)
+    {
+        // Menghapus data berdasarkan ID
+        if ($this->myconference->delete_submission_by_id($id)) {
+            // Jika berhasil menghapus data, tampilkan pesan sukses
+            $this->session->set_flashdata('message', 'Data berhasil dihapus.');
+        } else {
+            // Jika gagal menghapus data, tampilkan pesan kesalahan
+            $this->session->set_flashdata('message', 'Gagal menghapus data.');
+        }
+
+        // Redirect kembali ke halaman sebelumnya atau halaman utama
+        redirect('presenter/myconference');
+    }
+
     public function view_pdf($submission_id)
     {
         // Mengambil data submission dari model
