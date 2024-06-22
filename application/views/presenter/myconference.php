@@ -1,7 +1,7 @@
 <div class="container-fluid">
+    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message') ?>"></div>
 
     <!-- Page Heading -->
-
     <section class="content">
         <?php if ($this->session->flashdata('show_modal')) : ?>
             <!-- Modal -->
@@ -29,15 +29,20 @@
                 });
             </script>
         <?php endif; ?>
-
-        <?php if ($this->session->flashdata('message')) : ?>
-            <div class="alert alert-info">
-                <?= $this->session->flashdata('message'); ?>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-xl-4 mb-4">
+                    <form action="" method="POST">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" placeholder="Search Title..." autocomplete="off" autofocus>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit" value="Search">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        <?php endif; ?>
-
-        <?php foreach ($dataSubmit as $submission) : ?>
-            <div class="container-fluid">
+            <?php foreach ($dataSubmit as $submission) : ?>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Accounting Challenges and Opportunities in The Global Era</h6>
@@ -120,15 +125,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </section>
+    <!-- /.container-fluid -->
 
 </div>
-<!-- /.container-fluid -->
-
-</div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="newVideoModal" tabindex="-1" aria-labelledby="newVideoModalLabel" aria-hidden="true">
@@ -146,14 +148,24 @@
                         <input type="hidden" class="form-control" id="submissionId" name="id">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Link Video Presentation">
+                        <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Link Video Presentation" onkeyup="stoppedTyping()">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-primary" id="upload_button" disabled>Upload</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function stoppedTyping() {
+        if ($(this).val.length > 0) {
+            $('#upload_button').prop('disabled', false)
+        } else {
+            $('#upload_button').prop('disabled', true)
+        }
+    }
+</script>

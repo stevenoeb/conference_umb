@@ -160,13 +160,13 @@ class Admin extends CI_Controller
         }
 
         $config['base_url'] = base_url("admin/payment_verify_conference");
-        $this->db->select('payment_conference.*, user.name, cs.user_id, cs.topic, cs.title, cs.journal_path, cs.is_paid, cs.is_accept');
-        $this->db->join('conference_submissions cs', 'cs.id = payment_conference.conference_id');
-        $this->db->join('user', 'user.id = payment_conference.user_id');
-        $this->db->where('cs.is_accept', 'accepted');
+        $this->db->select('payment_conference.*, user.name, cs.user_id, cs.topic, cs.title, cs.journal_path, cs.is_paid, cs.is_accept', FALSE);
+        $this->db->join('user', 'user.id = payment_conference.user_id', 'inner');
+        $this->db->join('conference_submissions cs', 'cs.id = payment_conference.conference_id', 'inner');
+        $this->db->where('is_accept', 'accepted');
         if ($data['keyword']) {
-            $this->db->like('title', $data['keyword']);
-            $this->db->or_like('name', $data['keyword']);
+            $this->db->like('name', $data['keyword']);
+            $this->db->or_like('title', $data['keyword']);
         }
         $this->db->from('payment_conference');
         $config['total_rows'] = $this->db->count_all_results();

@@ -23,11 +23,9 @@ class Presenter extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-
-
     public function payment()
     {
-        $data['title'] = 'Payment';
+        $data['title'] = 'Payment Presenter';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Myconference_model', 'myconference');
 
@@ -81,16 +79,14 @@ class Presenter extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Conference_model', 'conference');
 
-        $data['submitPaper'] = $this->conference->getSubmitPaper();
-        $data['conference'] = $this->db->get('user')->result_array();
-
-        $this->form_validation->set_rules('topic', 'Topic', 'required|trim');
+        // $data['submitPaper'] = $this->conference->getSubmitPaper();
+        $this->load->library('form_validation');
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
         $this->form_validation->set_rules('abstract', 'Abstract', 'required|trim');
+        $this->form_validation->set_rules('journal_path', 'File FULLPAPER', 'required');
+        $this->form_validation->set_rules('poster_path', 'Poster', 'required');
 
-        $this->form_validation->set_rules('publish_journal', 'Publish Journal', 'required');
-
-        if ($this->form_validation->run() == false) {
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
@@ -104,7 +100,8 @@ class Presenter extends CI_Controller
             $config['upload_path'] = './assets/data/jurnal/';
             $this->load->library('upload', $config, 'uploadjurnal');
             $this->uploadjurnal->initialize($config);
-            $upjournal = $this->uploadjurnal->do_upload('journal_path');
+            $this->uploadjurnal->do_upload('journal_path');
+            $this->uploadjurnal->display_errors();
 
             $upload_poster = $_FILES['poster_path']['name'];
             $upload_poster = str_replace(' ', '_', $upload_poster);
@@ -113,7 +110,8 @@ class Presenter extends CI_Controller
             $config['upload_path'] = './assets/data/poster/';
             $this->load->library('upload', $config, 'uploadposter');
             $this->uploadposter->initialize($config);
-            $upposter = $this->uploadposter->do_upload('poster_path');
+            $this->uploadposter->do_upload('poster_path');
+            $this->uploadposter->display_errors();
 
             $data = [
                 'title' => $this->input->post('title'),
@@ -139,10 +137,22 @@ class Presenter extends CI_Controller
         $this->load->model('Myconference_model', 'myconference');
 
         $user_id = $data['user']['id']; // Assuming user table has an 'id' column
-        $data['dataSubmit'] = $this->myconference->getDataSubmitByUserId($user_id);
+
+        // Pagination
+        $this->load->library('pagination');
+        if (!$this->uri->segment(3) == 'myconference') {
+            $this->session->unset_userdata('keyword');
+        }
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $data['dataSubmit'] = $this->myconference->getDataSubmitByUserIdMyConference($user_id, $data['keyword']);
 
         $this->form_validation->set_rules('video_link', 'Link Video Presentation', 'required|trim');
-
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -157,7 +167,7 @@ class Presenter extends CI_Controller
             $this->db->where('id', $id);
             $this->db->update('conference_submissions');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your video has been updated!</div>');
+            $this->session->set_flashdata('message', 'Your video has been updated!');
             redirect('presenter/myconference');
         }
     }
