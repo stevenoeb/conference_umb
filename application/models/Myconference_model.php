@@ -54,4 +54,10 @@ class Myconference_model extends CI_Model
         $this->db->where('id', $conference_id);
         $this->db->update('conference_submissions', ['is_paid' => 'pending']);
     }
+    public function delete_submission_by_id($id)
+    {
+        // Menghapus data dari tabel berdasarkan ID
+        $this->db->where('id', $id);
+        return $this->db->delete('conference_submissions');  // Gantilah 'submissions' dengan nama tabel Anda
+    }
 }

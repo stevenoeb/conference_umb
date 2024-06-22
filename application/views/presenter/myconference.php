@@ -29,6 +29,13 @@
                 });
             </script>
         <?php endif; ?>
+
+        <?php if ($this->session->flashdata('message')) : ?>
+            <div class="alert alert-info">
+                <?= $this->session->flashdata('message'); ?>
+            </div>
+        <?php endif; ?>
+
         <?php foreach ($dataSubmit as $submission) : ?>
             <div class="container-fluid">
                 <div class="card shadow mb-4">
@@ -107,7 +114,7 @@
                                 <i class="fa fa-save"></i>
                                 Submission LOA
                             </a>
-                            <form method="POST" action="" class="d-inline confirm" data-confirm="Are you sure to delete this conference? you can't undo all your conference data after delete.">
+                            <form method="POST" action="<?= base_url('presenter/delete_submission/') . $submission['id'] ?>" class="d-inline confirm" data-confirm="Are you sure to delete this conference? you can't undo all your conference data after delete.">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                         </div>
