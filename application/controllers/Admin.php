@@ -18,6 +18,7 @@ class Admin extends CI_Controller
         $this->load->model('Admin_model', 'admin');
         $data['paper'] = $this->admin->countAllArticles();
         $data['presenter'] = $this->admin->countAllPresenter();
+        $data['olimpiade'] = $this->admin->countAllOlimpiade();
         $data['peserta'] = $this->admin->countAllPeserta();
 
         $this->load->view('templates/header', $data);

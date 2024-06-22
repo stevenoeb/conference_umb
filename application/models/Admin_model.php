@@ -72,22 +72,27 @@ class Admin_model extends CI_Model
 
     public function countAllAcceptedArticles()
     {
-        $query = "SELECT COUNT(id) FROM conference_submissions WHERE is_accept LIKE '%accepted%'";
-
-        return $this->db->query($query)->row_array();
+        $this->db->where('is_accept', 'accepted');
+        return $this->db->get('conference_submissions')->num_rows();
     }
 
     public function countAllPresenter()
     {
-        $query = "SELECT COUNT(id) AS presenter FROM user WHERE role_id=3";
+        $this->db->where('role_id', 3);
+        $this->db->count_all();
+        return $this->db->get('user')->num_rows();
+    }
 
-        return $this->db->query($query)->row_array();
+    public function countAllOlimpiade()
+    {
+        $this->db->count_all();
+        return $this->db->get('olimpiade_submissions')->num_rows();
     }
 
     public function countAllPeserta()
     {
-        $query = "SELECT COUNT(id) AS peserta FROM user WHERE role_id=6";
-
-        return $this->db->query($query)->row_array();
+        $this->db->where('role_id', 6);
+        $this->db->count_all();
+        return $this->db->get('user')->num_rows();
     }
 }
