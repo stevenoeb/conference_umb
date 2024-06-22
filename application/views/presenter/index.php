@@ -77,7 +77,7 @@
                     </div>
 
                 </div>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center py-5">
                     <div class="col-md-5">
                         <div class="box-footer">
                             <a href="<?= base_url('presenter/submitPaper') ?>" class="btn btn-lg btn-warning col-md-12" role="button">
