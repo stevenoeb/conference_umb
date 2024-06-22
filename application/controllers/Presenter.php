@@ -75,7 +75,7 @@ class Presenter extends CI_Controller
 
     public function submitPaper()
     {
-        $data['title'] = 'Submit Paper';
+        $data['title'] = 'Conference and Submit';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Conference_model', 'conference');
 
