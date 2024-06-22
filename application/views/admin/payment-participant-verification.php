@@ -27,12 +27,12 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Bukti Pembayaran</th>
-                            <th scope="col">Status</th>
+                            <!-- <th scope="col">Status</th> -->
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <?php if (empty($payment)) : ?>
+                        <?php if (empty($payment)) : ?>
                             <tr>
                                 <td colspan="7">
                                     <div class="alert alert-danger" role="alert">
@@ -46,19 +46,19 @@
                                 <form action="" method="POST">
                                     <th scope="row">
                                         <?= ++$start; ?>
-                                        <input type="hidden" name="id" value="<?= $p['olimpiade_id']; ?>">
+                                        <!-- <input type="hidden" name="id" value="<?= $p['olimpiade_id']; ?>"> -->
                                     </th>
                                     <td><?= $p['name'] ?></td>
                                     <td><a href="" class="badge badge-pill badge-primary" data-toggle="modal" data-target="#paymentModal<?= $start; ?>">Lihat Bukti Pembayaran</a></td>
                                     <td>
-                                        <span class="badge <?= ($p['is_paid'] == "unpaid") ? "badge-danger" : "badge-success" ?>"><?= $p['is_paid']; ?></span>
+                                        <!-- <span class="badge <?= ($p['is_paid'] == "unpaid") ? "badge-danger" : "badge-success" ?>"><?= $p['is_paid']; ?></span> -->
                                     </td>
                                     <td>
-                                        <?php if ($p['is_paid'] == "paid") : ?>
+                                        <!-- <?php if ($p['is_paid'] == "paid") : ?>
                                             <input type="button" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
                                         <?php elseif ($p['is_paid'] == "unpaid") : ?>
                                             <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
-                                        <?php endif; ?>
+                                        <?php endif; ?> -->
                                     </td>
                                 </form>
                             </tr>
@@ -81,13 +81,13 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <div class="d-flex row justify-content-between align-items-center px-2 mt-4">
-                <!-- <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing <?= $total_row; ?> data</div> -->
-                <!-- <?= $this->pagination->create_links(); ?> -->
+                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing <?= $total_row; ?> data</div>
+                <?= $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>

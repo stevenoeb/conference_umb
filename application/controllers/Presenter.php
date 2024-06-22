@@ -34,11 +34,9 @@ class Presenter extends CI_Controller
         $user_id = $data['user']['id'];
         $data['dataSubmit'] = $this->myconference->getDataSubmitByUserId($user_id);
 
-
-
         // Handle the form submission
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['payment_proof']['name']) && !empty($this->input->post('selected_submissions'))) {
-            $config['upload_path'] = './assets/data/pembayaran/';
+            $config['upload_path'] = './assets/data/pembayaran_conference/';
             $config['allowed_types'] = 'gif|jpg|jpeg|png';
             $config['max_size'] = 2048; // 2MB
 

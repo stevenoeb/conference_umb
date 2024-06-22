@@ -259,9 +259,37 @@ class Admin extends CI_Controller
         $data['title'] = 'Participant';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        // $this->load->model('Admin_model');
+        $this->load->model('Admin_model');
 
-        // $data['payment'] = $this->Admin_model->getOlimpiadeVerify($config['per_page'], $data['start'], $data['keyword']);
+        // Pagination
+        $this->load->library('pagination');
+        if (!$this->uri->segment(3) == 'payment_verify_participant') {
+            $this->session->unset_userdata('keyword');
+        }
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $config['base_url'] = base_url("admin/payment_verify_participant");
+        $this->db->join('user', 'user.id = payment_participant.user_id');
+        if ($data['keyword']) {
+            $this->db->like('name', $data['keyword']);
+        }
+        $this->db->from('payment_participant');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+
+        $data['payment'] = $this->Admin_model->getParticipantVerify($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

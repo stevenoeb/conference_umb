@@ -53,9 +53,17 @@ class Admin_model extends CI_Model
         return $this->db->get('payment_olimpiade', $limit, $start)->result_array();
     }
 
-    // public function getParticipantVerify() {
-    //     $this->db->select('payment_participant', )
-    // }
+    public function getParticipantVerify($limit, $start, $keyword = null)
+    {
+        $this->db->select('payment_participant.*, user.name');
+        $this->db->join('user', 'user.id = payment_participant.user_id');
+        if ($keyword) {
+            $this->db->like('name', $keyword);
+        }
+        $this->db->order_by('payment_participant.id', 'DESC');
+
+        return $this->db->get('payment_participant', $limit, $start)->result_array();
+    }
 
     public function countAllArticles()
     {
