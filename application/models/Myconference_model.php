@@ -12,23 +12,24 @@ class Myconference_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    // public function getMyConference()
-    // {
-    //     $query = "SELECT `cs`.*, `user`.`id`, `user`.`name`
-    //     FROM `conference_submissions` AS `cs`
-    //     INNER JOIN `user`
-    //     ON `cs`.`user_id` = `user`.`id`
-    //     WHERE `user`.`id` = 14";
-
-    //     return $this->db->query($query)->result_array();
-    // }
-
     public function getDataSubmitByUserId($user_id)
     {
         $this->db->select('conference_submissions.*, user.name');
         $this->db->from('conference_submissions');
         $this->db->join('user', 'conference_submissions.user_id = user.id');
         $this->db->where('conference_submissions.user_id', $user_id);
+        return $this->db->get()->result_array();
+    }
+
+    public function getDataSubmitByUserIdMyConference($user_id, $keyword = null)
+    {
+        $this->db->select('conference_submissions.*, user.name');
+        $this->db->from('conference_submissions');
+        $this->db->join('user', 'conference_submissions.user_id = user.id');
+        $this->db->where('conference_submissions.user_id', $user_id);
+        if ($keyword) {
+            $this->db->like('title', $keyword);
+        }
         return $this->db->get()->result_array();
     }
 
@@ -46,7 +47,7 @@ class Myconference_model extends CI_Model
 
     public function savePaymentData($data)
     {
-        $this->db->insert('payment', $data);
+        $this->db->insert('payment_conference', $data);
     }
 
     public function updateIsPaidStatus($conference_id)

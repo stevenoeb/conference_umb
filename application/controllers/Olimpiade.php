@@ -23,7 +23,7 @@ class Olimpiade extends CI_Controller
 
     public function upload()
     {
-        $data['title'] = 'Upload Video Link';
+        $data['title'] = 'Upload Link Video';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Olimpiade_model', 'olimpiade');
 
@@ -46,7 +46,7 @@ class Olimpiade extends CI_Controller
 
     public function upload_payment()
     {
-        $data['title'] = 'Upload Payment Proof';
+        $data['title'] = 'Payment Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $config['upload_path'] = './assets/data/pembayaran_olimpiade';
