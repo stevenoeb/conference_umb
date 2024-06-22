@@ -1,14 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
-
     <form enctype="multipart/form-data" method="post" action="<?= base_url('presenter/submitPaper') ?>">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">
-                    Show your idea
+                    Submit Paper
                 </h6>
             </div>
             <div class="card-body">
