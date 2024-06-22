@@ -77,7 +77,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="w-100" src="<?= base_url('assets/data/pembayaran/') . $p['image']; ?>" />
+                                            <img class="w-100" src="<?= base_url('assets/data/pembayaran_conference/') . $p['image']; ?>" />
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
