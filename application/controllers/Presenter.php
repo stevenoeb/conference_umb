@@ -83,8 +83,15 @@ class Presenter extends CI_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
         $this->form_validation->set_rules('abstract', 'Abstract', 'required|trim');
+<<<<<<< HEAD
         // $this->form_validation->set_rules('journal_path', 'File FULLPAPER', 'required');
         // $this->form_validation->set_rules('poster_path', 'Poster', 'required');
+=======
+        if (empty($_FILES['journal_path']['name']) || empty($_FILES['poster_path']['name'])) {
+            $this->form_validation->set_rules('journal_path', 'File FULLPAPER', 'required');
+            $this->form_validation->set_rules('poster_path', 'Poster', 'required');
+        }
+>>>>>>> 526c7cc2bd447b6b5263fc872a7d34e1686272e4
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
