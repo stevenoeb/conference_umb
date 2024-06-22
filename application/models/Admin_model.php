@@ -28,12 +28,12 @@ class Admin_model extends CI_Model
     public function getPaymentVerify($limit, $start, $keyword = null)
     {
         $this->db->select('payment_conference.*, user.name, cs.user_id, cs.topic, cs.title, cs.journal_path, cs.is_paid, cs.is_accept', FALSE);
+        $this->db->join('user', 'user.id = payment_conference.user_id', 'inner');
         $this->db->join('conference_submissions cs', 'cs.id = payment_conference.conference_id', 'inner');
-        $this->db->join('user', 'user.id = cs.user_id', 'inner');
         $this->db->where('is_accept', 'accepted');
         if ($keyword) {
-            $this->db->like('title', $keyword);
-            $this->db->or_like('name', $keyword);
+            $this->db->like('name', $keyword);
+            $this->db->or_like('title', $keyword);
         }
         $this->db->order_by('payment_conference.id', 'DESC');
 
