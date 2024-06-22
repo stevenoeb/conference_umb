@@ -15,7 +15,6 @@ class Olimpiade_submission_model extends CI_Model
     }
 }
 
-
 class Olimpiade_model extends CI_Model
 {
     public function insert_video_link($video_link)
@@ -26,5 +25,11 @@ class Olimpiade_model extends CI_Model
         // Memanggil model Olimpiade_submission_model untuk menyimpan data
         $this->load->model('Olimpiade_submission_model', 'submission_model');
         return $this->submission_model->insert_submission($user_id, $video_link);
+    }
+
+    public function getOlimpiadeVerify()
+    {
+        $this->db->join('olimpiade_submissions os', 'os.id = payment_olimpiade.olimpiade_id');
+        return $this->db->get('payment_olimpiade')->result_array();
     }
 }

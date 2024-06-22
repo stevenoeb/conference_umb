@@ -39,7 +39,9 @@ class Olimpiade extends CI_Controller
             $video_link = $this->input->post('video_link');
             $this->olimpiade->insert_video_link($video_link);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Link video berhasil diupload!</div>');
+            $this->session->set_flashdata('message', 'Success');
+            $this->session->set_flashdata('text', 'Link video berhasil diupload!');
+            $this->session->set_flashdata('icon', 'success');
             redirect('olimpiade');
         }
     }
@@ -48,6 +50,8 @@ class Olimpiade extends CI_Controller
     {
         $data['title'] = 'Payment Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Olimpiade_model', 'olimpiade');
+        $data['olimpiade_id'] = $this->olimpiade->getOlimpiadeVerify();
 
         $config['upload_path'] = './assets/data/pembayaran_olimpiade';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
@@ -67,12 +71,15 @@ class Olimpiade extends CI_Controller
             $file_name = $file_data['file_name'];
 
             $this->db->insert('payment_olimpiade', [
-                'user_id' => $data['user']['id'],
                 'image' => $file_name,
+                'olimpiade_id' => $data['olimpiade_id'][0]['id'],
+                'user_id' => $data['user']['id'],
                 'upload_date' => date('Y-m-d H:i:s')
             ]);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Payment proof uploaded successfully!</div>');
+            $this->session->set_flashdata('message', 'Success');
+            $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+            $this->session->set_flashdata('icon', 'success');
             redirect('olimpiade/upload_payment');
         }
     }

@@ -1,5 +1,7 @@
 <div class="container-fluid">
-    <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message') ?>"></div>
+    <div class="flash-data" data-flashdata-toast="<?= $this->session->flashdata('message') ?>"></div>
+    <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
+    <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
     <!-- Page Heading -->
     <section class="content">
@@ -119,9 +121,7 @@
                                 <i class="fa fa-save"></i>
                                 Submission LOA
                             </a>
-                            <form method="POST" action="<?= base_url('presenter/delete_submission/') . $submission['id'] ?>" class="d-inline confirm" data-confirm="Are you sure to delete this conference? you can't undo all your conference data after delete.">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <a href="<?= base_url('presenter/delete_submission/') . $submission['id'] ?>" class="btn btn-danger mc-delete-btn">Delete</a>
                         </div>
                     </div>
                 </div>

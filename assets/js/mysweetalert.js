@@ -1,31 +1,41 @@
-const flashData = $('.flash-data').data('flashdata');
-if (flashData) {
+const flashDataBtn = $('.flash-data').data('flashdata');
+if (flashDataBtn) {
 	Swal.fire({
-		title: flashData,
+		title: flashDataBtn,
 		text: 'Silahkan lanjutkan ke menu "My Conference" untuk Upload Link Video.',
 		icon: 'success'
 	});
 }
 
-const flashDataMyConference = $('.flash-data').data('flashdata');
-if (flashDataMyConference) {
+const flashDataToast = $('.flash-data').data('flashdata-toast');
+const flashDataToastText = $('.flash-data-text').data('flashdata-toast-text');
+const flashDataToastIcon = $('.flash-data-icon').data('flashdata-toast-icon');
+
+if (flashDataToast && flashDataToastText) {
 	Swal.fire({
-		position: "top",
-		icon: "success",
-		title: flashData,
-		text: 'Please wait Admin to accept your Conference.',
+		icon: flashDataToastIcon,
+		title: flashDataToast,
+		text: flashDataToastText,
 		showConfirmButton: false,
 		timer: 3500
 	});
 }
 
-// Accept Button for Payment
-// $('.accept-btn').on('submit', function (e) {
-// 	Swal.fire({
-// 		position: "top-end",
-// 		icon: "success",
-// 		title: "Your work has been saved",
-// 		showConfirmButton: false,
-// 		timer: 1500
-// 	});
-// });
+// Delete button on My Conference
+$('.mc-delete-btn').on('click', function (e) {
+	e.preventDefault();
+	const href = $(this).attr('href');
+	Swal.fire({
+		title: "Are you sure to delete this conference?",
+		text: "You can't undo all your conference data after delete.",
+		icon: "warning",
+		showCancelButton: true,
+		confirmButtonColor: "#3085d6",
+		cancelButtonColor: "#d33",
+		confirmButtonText: "Yes, delete it!"
+	}).then((result) => {
+		if (result.isConfirmed) {
+			document.location.href = href;
+		}
+	});
+});

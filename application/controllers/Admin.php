@@ -130,6 +130,7 @@ class Admin extends CI_Controller
             $this->db->set('is_accept', 'accepted');
             $this->db->where('id', $id);
             $this->db->update('conference_submissions');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Article has been successfully accepted.</div>');
             redirect('admin/verify_article/' . $data['start']);
         }
 

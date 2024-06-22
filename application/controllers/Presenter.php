@@ -31,37 +31,46 @@ class Presenter extends CI_Controller
 
         $user_id = $data['user']['id'];
         $data['dataSubmit'] = $this->myconference->getDataSubmitByUserId($user_id);
-
         // Handle the form submission
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['payment_proof']['name']) && !empty($this->input->post('selected_submissions'))) {
-            $config['upload_path'] = './assets/data/pembayaran_conference/';
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';
-            $config['max_size'] = 2048; // 2MB
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['payment_proof']['name'])) {
+            if (!empty($this->input->post('selected_submissions'))) {
+                $config['upload_path'] = './assets/data/pembayaran_conference/';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';
+                $config['max_size'] = 2048; // 2MB
 
-            $this->load->library('upload', $config);
+                $this->load->library('upload', $config);
 
-            if ($this->upload->do_upload('payment_proof')) {
-                $uploadData = $this->upload->data();
-                $image = $uploadData['file_name'];
+                if ($this->upload->do_upload('payment_proof')) {
+                    $uploadData = $this->upload->data();
+                    $image = $uploadData['file_name'];
 
-                // Save payment data for each selected submission
-                $selectedSubmissions = $this->input->post('selected_submissions');
-                foreach ($selectedSubmissions as $conference_id) {
-                    $paymentData = [
-                        'user_id' => $user_id,
-                        'image' => $image,
-                        'conference_id' => $conference_id
-                    ];
-                    $this->myconference->savePaymentData($paymentData);
+                    // Save payment data for each selected submission
+                    $selectedSubmissions = $this->input->post('selected_submissions');
+                    echo var_dump($selectedSubmissions);
+                    foreach ($selectedSubmissions as $conference_id) {
+                        $paymentData = [
+                            'user_id' => $user_id,
+                            'image' => $image,
+                            'conference_id' => $conference_id
+                        ];
+                        $this->myconference->savePaymentData($paymentData);
 
-                    // Update is_paid status
-                    $this->myconference->updateIsPaidStatus($conference_id);
+                        // Update is_paid status
+                        $this->myconference->updateIsPaidStatus($conference_id);
+                    }
+
+                    $this->session->set_flashdata('message', 'Success');
+                    $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+                    $this->session->set_flashdata('icon', 'success');
+                    redirect('presenter/payment');
+                } else {
+                    $data['error'] = $this->upload->display_errors();
                 }
-
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Payment proof uploaded successfully!</div>');
-                redirect('presenter/payment');
             } else {
-                $data['error'] = $this->upload->display_errors();
+                $this->session->set_flashdata('message', 'Failed');
+                $this->session->set_flashdata('text', 'Please select submission to pay!');
+                $this->session->set_flashdata('icon', 'error');
+                redirect('presenter/payment');
             }
         }
 
@@ -168,6 +177,8 @@ class Presenter extends CI_Controller
             $this->db->update('conference_submissions');
 
             $this->session->set_flashdata('message', 'Your video has been updated!');
+            $this->session->set_flashdata('text', 'Please wait Admin to accept your Conference.');
+            $this->session->set_flashdata('icon', 'success');
             redirect('presenter/myconference');
         }
     }
@@ -177,10 +188,14 @@ class Presenter extends CI_Controller
         // Menghapus data berdasarkan ID
         if ($this->myconference->delete_submission_by_id($id)) {
             // Jika berhasil menghapus data, tampilkan pesan sukses
-            $this->session->set_flashdata('message', 'Data berhasil dihapus.');
+            $this->session->set_flashdata('message', 'Deleted!');
+            $this->session->set_flashdata('text', 'The conference has been deleted.');
+            $this->session->set_flashdata('icon', 'success');
         } else {
             // Jika gagal menghapus data, tampilkan pesan kesalahan
             $this->session->set_flashdata('message', 'Gagal menghapus data.');
+            $this->session->set_flashdata('text', '');
+            $this->session->set_flashdata('icon', 'error');
         }
 
         // Redirect kembali ke halaman sebelumnya atau halaman utama
