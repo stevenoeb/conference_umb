@@ -19,7 +19,7 @@
                     </form>
                 </div>
             </div>
-            <div class="row overflow-auto mt-4">
+            <div class="row overflow-auto mt-4 table-responsive">
                 <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
                 <table class="table table-hover">
                     <thead>

@@ -304,7 +304,36 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Admin_model', 'admin');
-        $data['submissions'] = $this->admin->getOlimpiadeSubmissions();
+
+        // Pagination
+        $this->load->library('pagination');
+        if (!$this->uri->segment(3) == 'list_olimpiade') {
+            $this->session->unset_userdata('keyword');
+        }
+        if ($this->input->post('submit')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $config['base_url'] = base_url("admin/list_olimpiade");
+        $this->db->join('user', 'olimpiade_submissions.user_id = user.id');
+        if ($data['keyword']) {
+            $this->db->like('name', $data['keyword']);
+        }
+        $this->db->from('olimpiade_submissions');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 10;
+        $data['total_row'] = $config['total_rows'];
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        if (!$data['start']) {
+            $data['start'] = 0;
+        }
+
+        $data['submissions'] = $this->admin->getOlimpiadeSubmissions($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

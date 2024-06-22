@@ -16,13 +16,15 @@ class Admin_model extends CI_Model
         return $this->db->get('conference_submissions', $limit, $start)->result_array();
     }
 
-    public function getOlimpiadeSubmissions()
+    public function getOlimpiadeSubmissions($limit, $start, $keyword = null)
     {
         $this->db->select('olimpiade_submissions.*, user.name');
-        $this->db->from('olimpiade_submissions');
         $this->db->join('user', 'olimpiade_submissions.user_id = user.id');
-        $query = $this->db->get();
-        return $query->result_array();
+        if ($keyword) {
+            $this->db->like('name', $keyword);
+        }
+        $this->db->order_by('olimpiade_submissions.id', 'DESC');
+        return $this->db->get('olimpiade_submissions', $limit, $start)->result_array();
     }
 
     public function getPaymentVerify($limit, $start, $keyword = null)
