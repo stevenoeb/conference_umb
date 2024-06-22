@@ -13,7 +13,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword" placeholder="Search Name/Title..." autocomplete="off" autofocus>
                             <div class="input-group-append">
-                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit">
+                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit" value="Search">
                             </div>
                         </div>
                     </form>

@@ -7,7 +7,6 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
-        // $this->session->unset_userdata('keyword');
     }
 
     public function index()
