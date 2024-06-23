@@ -52,7 +52,7 @@
                                     </th>
                                     <td><?= $p['name'] ?></td>
                                     <td><?= $p['title'] ?></td>
-                                    <td><?= $p['journal_path'] ?></td>
+                                    <td><a href="<?= base_url('assets/data/jurnal/' . $p['journal_path']) ?>" target="_blank" class="badge badge-pill badge-primary">View Journal</a></td>
                                     <td><a href="" class="badge badge-pill badge-primary" data-toggle="modal" data-target="#paymentModal<?= $start; ?>">Lihat Bukti Pembayaran</a></td>
                                     <td>
                                         <span class="badge <?= ($p['is_paid'] == "pending") ? "badge-warning" : "badge-success" ?>"><?= $p['is_paid']; ?></span>
