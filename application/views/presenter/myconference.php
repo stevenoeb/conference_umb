@@ -93,6 +93,16 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td style="width:25%"><strong>Is Publish</strong></td>
+                                            <td>
+                                                <?php if ($submission['publish_journal'] == 'no') : ?>
+                                                    <a class="badge badge-secondary text-light"><?= $submission['publish_journal'] ?></a>
+                                                <?php else : ?>
+                                                    <a class="badge badge-primary text-light"><?= $submission['publish_journal'] ?></a>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td style="width:25%"><strong>Status Fullpaper</strong></td>
                                             <td>Waiting for the paper</td>
                                         </tr>
