@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
     <div class="card shadow mb-4">
-        <div class="card-body">
+        <div class="card-header">
             <div class="row">
                 <div class="col-sm-12 col-md-5">
                     <form action="" method="POST">
@@ -18,7 +18,8 @@
                     </form>
                 </div>
             </div>
-
+        </div>
+        <div class="card-body">
             <div class="row overflow-auto">
                 <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
                 <?= $this->session->flashdata('message') ?>
