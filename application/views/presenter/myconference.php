@@ -59,8 +59,7 @@
                                 <table class="table table-user-information table-sm">
                                     <tbody>
                                         <tr>
-                                            <td style="width:25%"><strong>id</strong></td>
-                                            <td><?= $submission['id'] ?></td>
+                                            <input type="hidden" name="id" value="<?= $submission['id'] ?>" />
                                         </tr>
                                         <tr>
                                             <td style="width:25%"><strong>Title</strong></td>
