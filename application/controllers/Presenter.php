@@ -161,8 +161,8 @@ class Presenter extends CI_Controller
 
         $data['dataSubmit'] = $this->myconference->getDataSubmitByUserIdMyConference($user_id, $data['keyword']);
 
-        $this->form_validation->set_rules('video_link', 'Link Video Presentation', 'required|trim');
-        if ($this->form_validation->run() == false) {
+        $this->form_validation->set_rules('video_link', 'Link Video Presentation', 'required|trim|valid_url');
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
