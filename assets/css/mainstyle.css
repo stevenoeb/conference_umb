@@ -479,6 +479,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	background-size: cover;
 	overflow: hidden;
 	position: relative;
+	margin-bottom: 50px;
 }
 
 #intro:before {
@@ -521,6 +522,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-weight: 600;
 	text-transform: uppercase;
 }
+
+#intro h2 {
+	color: #fff;
+	font-family: "Raleway", sans-serif;
+	font-size: 36px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
 
 #intro h1 span {
 	color: #f82249;
@@ -666,6 +676,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	justify-content: center;
 	align-items: center;
 	background: #fff;
+	flex-wrap: wrap;
 }
 
 .navigasion {
@@ -697,9 +708,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .navigasion img {
 	display: block;
-	/* Membuat gambar menjadi blok sehingga teks berada di bawahnya */
 	margin: auto;
-	/* Pusatkan gambar */
+	max-width: 100%;
+	height: auto;
 }
 
 .popup-overlay {
@@ -742,6 +753,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 	color: #fff;
 	border: none;
 	cursor: pointer;
+}
+
+@media (max-width: 600px) {
+	.navigasion {
+		width: 100%;
+		padding: 15px;
+		margin-bottom: 20px;
+		font-size: 16px; /* Adjust font size for smaller screens */
+	}
+
+	.navigasion img {
+		max-width: 50px;
+	}
 }
 
 /*--------------------------------------------------------------
