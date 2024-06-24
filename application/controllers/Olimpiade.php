@@ -27,22 +27,32 @@ class Olimpiade extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Olimpiade_model', 'olimpiade');
 
-        $this->form_validation->set_rules('video_link', 'Video Link', 'required|valid_url');
+        $data['olimpiade'] = $this->olimpiade->getOlimpiadeVerify();
+        if (!$data['olimpiade']) {
+        } else {
+            $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">Anda hanya boleh upload olimpiade <b>1x</b>!</div>');
+        }
 
-        if ($this->form_validation->run() == false) {
+        $this->form_validation->set_rules('video_link', 'Video Link', 'required|valid_url');
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('olimpiade/upload', $data);
             $this->load->view('templates/footer');
         } else {
-            $video_link = $this->input->post('video_link');
-            $this->olimpiade->insert_video_link($video_link);
+            if ($data['olimpiade']) {
+                $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">Anda hanya boleh upload olimpiade <b>1x</b>!</div>');
+                redirect('olimpiade/upload');
+            } else {
+                $video_link = $this->input->post('video_link');
+                $this->olimpiade->insert_video_link($video_link);
 
-            $this->session->set_flashdata('message', 'Success');
-            $this->session->set_flashdata('text', 'Link video berhasil diupload!');
-            $this->session->set_flashdata('icon', 'success');
-            redirect('olimpiade');
+                $this->session->set_flashdata('message', 'Success');
+                $this->session->set_flashdata('text', 'Link video berhasil diupload!');
+                $this->session->set_flashdata('icon', 'success');
+                redirect('olimpiade');
+            }
         }
     }
 
@@ -72,7 +82,7 @@ class Olimpiade extends CI_Controller
 
             $this->db->insert('payment_olimpiade', [
                 'image' => $file_name,
-                'olimpiade_id' => $data['olimpiade_id'][0]['id'],
+                'olimpiade_id' => $data['olimpiade_id']['olimpiadeID'],
                 'user_id' => $data['user']['id'],
                 'upload_date' => date('Y-m-d H:i:s')
             ]);
