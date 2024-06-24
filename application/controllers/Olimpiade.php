@@ -60,8 +60,11 @@ class Olimpiade extends CI_Controller
     {
         $data['title'] = 'Payment Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
         $this->load->model('Olimpiade_model', 'olimpiade');
+
         $data['olimpiade_id'] = $this->olimpiade->getOlimpiadeVerify();
+        $data['olimpiade_unpaid'] = $this->olimpiade->getOlimpiadeUnpaid();
 
         $config['upload_path'] = './assets/data/pembayaran_olimpiade';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
@@ -86,6 +89,9 @@ class Olimpiade extends CI_Controller
                 'user_id' => $data['user']['id'],
                 'upload_date' => date('Y-m-d H:i:s')
             ]);
+
+            $this->db->where('id', $data['olimpiade_id']['olimpiadeID']);
+            $this->db->update('olimpiade_submissions', ['is_paid' => 'pending']);
 
             $this->session->set_flashdata('message', 'Success');
             $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');

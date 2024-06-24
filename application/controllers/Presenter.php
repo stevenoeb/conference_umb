@@ -46,7 +46,7 @@ class Presenter extends CI_Controller
 
                     // Save payment data for each selected submission
                     $selectedSubmissions = $this->input->post('selected_submissions');
-                    echo var_dump($selectedSubmissions);
+                    // echo var_dump($selectedSubmissions);
                     foreach ($selectedSubmissions as $conference_id) {
                         $paymentData = [
                             'user_id' => $user_id,
