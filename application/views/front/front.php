@@ -113,10 +113,7 @@
                 <p>Muhammadiyah University of Bandung</p>
                 <p>Indonesia</p>
                 <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
+                  <p>ᅠ ᅠ</p>
                 </div>
               </div>
             </div>
@@ -128,10 +125,7 @@
                 <h3 style="font-size: 17px;"><a href="speaker-details.html">Dr. Hj. Atalia Pratatya, SIP., M.I.Kom.</a></h3>
                 <p>Indonesia</p>
                 <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
+                  <p>ᅠ ᅠ</p>
                 </div>
               </div>
             </div>
@@ -144,10 +138,7 @@
                 <p>Universitas Muhammadiyah Sidoarjo</p>
                 <p>Indonesia</p>
                 <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
+                  <p>ᅠ ᅠ</p>
                 </div>
               </div>
             </div>
@@ -160,10 +151,7 @@
                 <p style="font-size: 13px;">Tashkent State University of Economics Samarkand Branch</p>
                 <p>Uzbekistan</p>
                 <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
+                  <p>ᅠ ᅠ</p>
                 </div>
               </div>
             </div>
@@ -176,10 +164,7 @@
                 <p>Ajeenkya D.Y. Patil University of India</p>
                 <p>India</p>
                 <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
+                <p>ᅠ ᅠ</p>
                 </div>
               </div>
             </div>
@@ -192,10 +177,7 @@
                 <p>Dean of Bussines School, UniKL</p>
                 <p>Malaysia</p>
                 <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
+                <p>ᅠ ᅠ</p>
                 </div>
               </div>
             </div>
