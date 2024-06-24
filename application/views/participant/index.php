@@ -36,7 +36,11 @@
     }
 
     .welcome-container img {
-        max-width: 100%;
+        max-width: 50%;
+        /* Adjust the max-width as needed */
         height: auto;
+        margin: 0 auto;
+        /* Center the image */
+        display: block;
     }
 </style>

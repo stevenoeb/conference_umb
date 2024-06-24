@@ -20,18 +20,23 @@ class Publisher extends CI_Controller
 
         // Pagination
         $this->load->library('pagination');
+        if (!$this->uri->segment(3) == 'publisher') {
+            $this->session->unset_userdata('keyword');
+        }
         if ($this->input->post('submit')) {
             $data['keyword'] = $this->input->post('keyword');
             $this->session->set_userdata('keyword', $data['keyword']);
         } else {
-            // $data['keyword'] = $this->session->userdata('keyword');
-            $data['keyword'] = "";
+            $data['keyword'] = $this->session->userdata('keyword');
         }
 
         $config['base_url'] = base_url("publisher/index");
         $this->db->join('user', 'user.id = conference_submissions.user_id');
-        $this->db->like('title', $data['keyword']);
-        $this->db->or_like('name', $data['keyword']);
+        $this->db->where('publish_journal', 'yes');
+        if ($data['keyword']) {
+            $this->db->like('title', $data['keyword']);
+            $this->db->or_like('name', $data['keyword']);
+        }
         $this->db->from('conference_submissions');
         $config['total_rows'] = $this->db->count_all_results();
         $config['per_page'] = 10;

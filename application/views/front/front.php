@@ -28,50 +28,14 @@
   <link href="<?= base_url('assets/css/mainstyle.css'); ?>" rel="stylesheet">
   <link href="<?= base_url('assets/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: TheEvent
-    Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= test-->
 </head>
 
 <body>
-
-  <!--==========================
-    Header
-  ============================-->
-  <!-- <header id="header"> -->
-  <!-- <div class="container"> -->
-
-  <!-- <div id="logo" class="pull-left"> -->
-  <!-- Uncomment below if you prefer to use a text logo -->
-  <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-  <!-- <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a> -->
-  <!-- </div> -->
-
-  <!-- <nav id="nav-menu-container"> -->
-  <!-- <ul class="nav-menu"> -->
-  <!-- <li class="menu-active"><a href="#intro">Home</a></li> -->
-  <!-- <li><a href="#about">About</a></li> -->
-  <!-- <li><a href="#speakers">Speakers</a></li> -->
-  <!-- <li><a href="#schedule">Schedule</a></li> -->
-  <!-- <li><a href="#venue">Venue</a></li> -->
-  <!-- <li><a href="#hotels">Hotels</a></li> -->
-  <!-- <li><a href="#gallery">Gallery</a></li> -->
-  <!-- <li><a href="#sponsors">Sponsors</a></li> -->
-  <!-- <li><a href="#contact">Contact</a></li> -->
-  <!-- <li class="buy-tickets"><a href="<?= base_url('auth/registration'); ?>">Registration</a></li> -->
-  <!-- </ul> -->
-  <!-- </nav> #nav-menu-container -->
-  <!-- </div> -->
-  <!-- </header>#header -->
-
   <!--==========================
     Intro Section
   ============================-->
 
-  <section id="intro">
+  <section id="intro" style="height: 100vh;">
     <div class="intro-container wow fadeIn">
       <div class="logo-container" style="display: flex; align-items: center; justify-content: center;">
         <img src="<?= base_url('assets/img/logo/umb.jpg'); ?>" alt="Logo" class="logo-bulet">
@@ -80,7 +44,7 @@
       </div>
       <h1 class="mb-4 pb-0">Accounting Conference<br><span style="color: #3DD99E;">on Sustainability </span>and Technopreneurial (ACST):<br>1st International Series.</h1>
       <p class="mb-4 pb-0">July 3rd & 19th 2024, Muhammadiyah University of Bandung , Indonesia</p>
-      <p class="mb-4 pb-0">CO-HOST</p>
+      <h2 class="mb-4 pb-0">CO-HOST</h2>
       <div class="logo-container" style="display: flex; align-items: center; justify-content: center;">
         <img src="<?= base_url('assets/img/logo/UMG.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
         <img src="<?= base_url('assets/img/logo/UMS.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">

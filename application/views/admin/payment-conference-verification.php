@@ -2,8 +2,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title ?> Payment Verification</h1>
 
+    <?= $this->session->flashdata('message') ?>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="row">
@@ -12,15 +13,14 @@
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword" placeholder="Search Name/Title..." autocomplete="off" autofocus>
                             <div class="input-group-append">
-                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit">
+                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit" value="Search">
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="row overflow-auto mt-4">
+            <div class="row overflow-auto mt-4 table-responsive">
                 <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
-                <?= $this->session->flashdata('message') ?>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -52,18 +52,16 @@
                                     </th>
                                     <td><?= $p['name'] ?></td>
                                     <td><?= $p['title'] ?></td>
-                                    <td><?= $p['journal_path'] ?></td>
+                                    <td><a href="<?= base_url('assets/data/jurnal/' . $p['journal_path']) ?>" target="_blank" class="badge badge-pill badge-primary">View Journal</a></td>
                                     <td><a href="" class="badge badge-pill badge-primary" data-toggle="modal" data-target="#paymentModal<?= $start; ?>">Lihat Bukti Pembayaran</a></td>
                                     <td>
                                         <span class="badge <?= ($p['is_paid'] == "pending") ? "badge-warning" : "badge-success" ?>"><?= $p['is_paid']; ?></span>
                                     </td>
                                     <td>
                                         <?php if ($p['is_paid'] == "paid") : ?>
-                                            <input type="submit" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
-                                            <!-- <a href="#!" class="badge badge-danger d-none">Decline</a> -->
+                                            <input type="button" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
                                         <?php elseif ($p['is_paid'] == "pending") : ?>
-                                            <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
-                                            <!-- <a href="#!" class="badge badge-danger">Decline</a> -->
+                                            <input type="submit" class="btn btn-sm btn-outline-info rounded-pill accept-btn" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
                                         <?php endif; ?>
                                     </td>
                                 </form>
@@ -79,7 +77,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <img class="w-100" src="<?= base_url('assets/data/pembayaran/') . $p['image']; ?>" />
+                                            <img class="w-100" src="<?= base_url('assets/data/pembayaran_conference/') . $p['image']; ?>" />
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

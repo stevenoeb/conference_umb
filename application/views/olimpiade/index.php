@@ -1,5 +1,8 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    <div class="flash-data" data-flashdata-toast="<?= $this->session->flashdata('message') ?>"></div>
+    <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
+    <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
     <!-- Begin Page Content -->
     <div class="container-fluid text-center">
@@ -36,7 +39,11 @@
     }
 
     .welcome-container img {
-        max-width: 100%;
+        max-width: 50%;
+        /* Adjust the max-width as needed */
         height: auto;
+        margin: 0 auto;
+        /* Center the image */
+        display: block;
     }
 </style>

@@ -4,6 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
+    <?= $this->session->flashdata('message') ?>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="row">
@@ -12,7 +13,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword" placeholder="Search Name/Title..." autocomplete="off" autofocus>
                             <div class="input-group-append">
-                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit">
+                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit" value="Search">
                             </div>
                         </div>
                     </form>
@@ -20,7 +21,6 @@
             </div>
             <div class="row overflow-auto mt-4">
                 <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
-                <?= $this->session->flashdata('message') ?>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -54,7 +54,6 @@
                                         <td><?= $article['name'] ?></td>
                                         <td><?= $article['title'] ?></td>
                                         <td>
-                                            <!-- Button to open the journal in a new tab -->
                                             <a href="<?= base_url('assets/data/jurnal/' . $article['journal_path']) ?>" target="_blank" class="btn btn-primary btn-sm w-100">View Journal</a>
                                         </td>
                                         <td><a href="<?= $article['link_video'] ?>" target="_blank"><?= $article['link_video'] ?></a></td>

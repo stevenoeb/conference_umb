@@ -48,7 +48,9 @@ class Participant extends CI_Controller
                 'upload_date' => date('Y-m-d H:i:s')
             ]);
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Payment proof uploaded successfully!</div>');
+            $this->session->set_flashdata('message', 'Success');
+            $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+            $this->session->set_flashdata('icon', 'success');
             redirect('participant/upload_payment');
         }
     }

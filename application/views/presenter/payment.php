@@ -1,6 +1,9 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="container mt-5">
+        <div class="flash-data" data-flashdata-toast="<?= $this->session->flashdata('message') ?>"></div>
+        <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
+        <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
         <!-- Payment Proof Upload Form -->
         <form action="<?= base_url('presenter/payment') ?>" method="post" enctype="multipart/form-data">
@@ -35,15 +38,12 @@
                 <?php endif; ?>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="upload_button" disabled>Submit</button>
         </form>
 
         <!-- Button triggers for modals -->
         <button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target="#bankInfoModal">
             Bank Information
-        </button>
-        <button type="button" class="btn btn-info mt-3" data-toggle="modal" data-target="#billInfoModal">
-            Total Bill Info
         </button>
 
         <!-- Bank Info Modal -->
@@ -59,9 +59,7 @@
                     <div class="modal-body">
                         <!-- List of banks -->
                         <ul>
-                            <li>Bank A - Account Number: XXXXXXX</li>
-                            <li>Bank B - Account Number: XXXXXXX</li>
-                            <li>Bank C - Account Number: XXXXXXX</li>
+                            <li>Bank BJB Syariah 5430-2060-25230 (a.n. Prodi Akuntansi UMBandung)</li>
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -72,38 +70,7 @@
         </div>
 
         <!-- Bill Info Modal -->
-        <div class="modal fade" id="billInfoModal" tabindex="-1" aria-labelledby="billInfoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="billInfoModalLabel">Total Bill Info</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- User's name and list of submitted titles -->
-                        <p><strong>Name:</strong> <?= $user['name'] ?></p>
-                        <p><strong>Submitted Titles:</strong></p>
-                        <ul>
-                            <?php
-                            $totalAmount = 0;
-                            foreach ($dataSubmit as $submission) :
-                                if ($submission['is_accept'] === 'accepted' && $submission['is_paid'] === 'no') {
-                                    $totalAmount += 30000; // Price per title
-                                    echo "<li>{$submission['title']} - 30,000 IDR</li>";
-                                }
-                            endforeach;
-                            ?>
-                        </ul>
-                        <p><strong>Total Amount:</strong> <?= number_format($totalAmount, 0, ',', '.') ?> IDR</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
 </div>
@@ -111,11 +78,6 @@
 
 </div>
 <!-- End of Main Content -->
-
-<!-- Include Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
     // Show the file name and preview of the selected file
@@ -128,6 +90,10 @@
     });
 
     function previewFile() {
+        if (document.getElementById("payment_proof").value.length > 0) {
+            $('#upload_button').prop('disabled', false);
+        }
+
         var preview = document.getElementById('filePreview');
         var file = document.getElementById('payment_proof').files[0];
         var reader = new FileReader();
@@ -146,6 +112,7 @@
     }
 
     function cancelPreview() {
+        $('#upload_button').prop('disabled', true);
         var preview = document.getElementById('filePreview');
         var fileInput = document.getElementById('payment_proof');
         var fileLabel = document.querySelector('.custom-file-label');

@@ -1,7 +1,9 @@
 <div class="container-fluid">
+    <div class="flash-data" data-flashdata-toast="<?= $this->session->flashdata('message') ?>"></div>
+    <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
+    <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
     <!-- Page Heading -->
-
     <section class="content">
         <?php if ($this->session->flashdata('show_modal')) : ?>
             <!-- Modal -->
@@ -29,8 +31,20 @@
                 });
             </script>
         <?php endif; ?>
-        <?php foreach ($dataSubmit as $submission) : ?>
-            <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-8 col-xl-4 mb-4">
+                    <form action="" method="POST">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" placeholder="Search Title..." autocomplete="off" autofocus>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-primary btn-outline-secondary text-white" name="submit" value="Search">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <?php foreach ($dataSubmit as $submission) : ?>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Accounting Challenges and Opportunities in The Global Era</h6>
@@ -38,16 +52,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2 col-lg-3 text-center">
-                                <!-- <img src="" alt="User Pic" class="image-responsive-rounded" style="width:75%; height: auto"> -->
-                                <img src="<?= base_url('assets/img/profile/') . $user['image'] ?>" class="img-fluid rounded-start" alt="Profile Picture">
+                                <img src="<?= base_url('assets/data/poster/') . $submission['poster_path'] ?>" alt="Poster Picture" class="image-responsive-rounded" style="width:75%; height: auto">
                             </div>
                             <div class="col-md-9 col-lg-9">
                                 <br>
                                 <table class="table table-user-information table-sm">
                                     <tbody>
                                         <tr>
-                                            <td style="width:25%"><strong>id</strong></td>
-                                            <td><?= $submission['id'] ?></td>
+                                            <input type="hidden" name="id" value="<?= $submission['id'] ?>" />
                                         </tr>
                                         <tr>
                                             <td style="width:25%"><strong>Title</strong></td>
@@ -80,6 +92,16 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td style="width:25%"><strong>Is Publish</strong></td>
+                                            <td>
+                                                <?php if ($submission['publish_journal'] == 'no') : ?>
+                                                    <a class="badge badge-secondary text-light"><?= $submission['publish_journal'] ?></a>
+                                                <?php else : ?>
+                                                    <a class="badge badge-primary text-light"><?= $submission['publish_journal'] ?></a>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td style="width:25%"><strong>Status Fullpaper</strong></td>
                                             <td>Waiting for the paper</td>
                                         </tr>
@@ -108,21 +130,17 @@
                                 <i class="fa fa-save"></i>
                                 Submission LOA
                             </a>
-                            <form method="POST" action="" class="d-inline confirm" data-confirm="Are you sure to delete this conference? you can't undo all your conference data after delete.">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <a href="<?= base_url('presenter/delete_submission/') . $submission['id'] ?>" class="btn btn-danger mc-delete-btn">Delete</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </section>
+    <!-- /.container-fluid -->
 
 </div>
-<!-- /.container-fluid -->
-
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="newVideoModal" tabindex="-1" aria-labelledby="newVideoModalLabel" aria-hidden="true">
@@ -140,14 +158,24 @@
                         <input type="hidden" class="form-control" id="submissionId" name="id">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Link Video Presentation">
+                        <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Link Video Presentation" onkeyup="stoppedTyping()">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-primary" id="upload_button" disabled>Upload</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function stoppedTyping() {
+        if ($(this).val.length > 0) {
+            $('#upload_button').prop('disabled', false)
+        } else {
+            $('#upload_button').prop('disabled', true)
+        }
+    }
+</script>

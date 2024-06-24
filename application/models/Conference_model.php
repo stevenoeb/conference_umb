@@ -16,6 +16,7 @@ class Conference_model extends CI_Model
     {
         $this->db->select('conference_submissions.*, user.name');
         $this->db->join('user', 'user.id = conference_submissions.user_id');
+        $this->db->where('publish_journal', 'yes');
         if ($keyword) {
             $this->db->like('title', $keyword);
             $this->db->or_like('name', $keyword);

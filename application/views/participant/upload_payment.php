@@ -1,7 +1,10 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="container mt-5">
+    <div class="flash-data" data-flashdata-toast="<?= $this->session->flashdata('message') ?>"></div>
+    <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
+    <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
+    <div class="container mt-5">
         <!-- Payment Proof Upload Form -->
         <form action="<?= base_url('participant/upload_payment') ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -15,7 +18,7 @@
                     <button type="button" class="btn btn-danger btn-sm mt-2" onclick="cancelPreview()">Cancel</button>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="upload_button" disabled>Submit</button>
         </form>
 
         <!-- Button triggers for modals -->
@@ -41,9 +44,7 @@
                 <div class="modal-body">
                     <!-- List of banks -->
                     <ul>
-                        <li>Bank A - Account Number: XXXXXXX</li>
-                        <li>Bank B - Account Number: XXXXXXX</li>
-                        <li>Bank C - Account Number: XXXXXXX</li>
+                        <li>Bank BJB Syariah 5430-2060-25230 (a.n. Prodi Akuntansi UMBandung)</li>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -74,12 +75,8 @@
         </div>
     </div>
 </div>
-<!-- Include Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
+<script type="text/javascript">
     // Show the file name and preview of the selected file
     document.querySelector('.custom-file-input').addEventListener('change', function(e) {
         var fileName = document.getElementById("payment_proof").files[0].name;
@@ -90,6 +87,10 @@
     });
 
     function previewFile() {
+        if (document.getElementById("payment_proof").value.length > 0) {
+            $('#upload_button').prop('disabled', false);
+        }
+
         var preview = document.getElementById('filePreview');
         var file = document.getElementById('payment_proof').files[0];
         var reader = new FileReader();
@@ -108,6 +109,7 @@
     }
 
     function cancelPreview() {
+        $('#upload_button').prop('disabled', true);
         var preview = document.getElementById('filePreview');
         var fileInput = document.getElementById('payment_proof');
         var fileLabel = document.querySelector('.custom-file-label');
