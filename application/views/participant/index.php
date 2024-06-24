@@ -43,4 +43,42 @@
         /* Center the image */
         display: block;
     }
+
+    @media (max-width: 768px) {
+        .welcome-container h1 {
+            font-size: 2.5rem;
+        }
+
+        .welcome-container p {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .welcome-container h1 {
+            font-size: 2rem;
+        }
+
+        .welcome-container p {
+            font-size: 0.875rem;
+        }
+
+        .welcome-container img {
+            max-width: 75%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .welcome-container h1 {
+            font-size: 1.5rem;
+        }
+
+        .welcome-container p {
+            font-size: 0.75rem;
+        }
+
+        .welcome-container img {
+            max-width: 100%;
+        }
+    }
 </style>
