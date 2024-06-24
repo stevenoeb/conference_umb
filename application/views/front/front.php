@@ -80,8 +80,13 @@
       </div>
       <h1 class="mb-4 pb-0">Accounting Conference<br><span style="color: #3DD99E;">on Sustainability </span>and Technopreneurial (ACST):<br>1st International Series.</h1>
       <p class="mb-4 pb-0">July 3rd & 19th 2024, Muhammadiyah University of Bandung , Indonesia</p>
-      <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-      <a href="#about" class="about-btn scrollto">About The Event</a>
+      <p class="mb-4 pb-0">CO-HOST</p>
+      <div class="logo-container" style="display: flex; align-items: center; justify-content: center;">
+        <img src="<?= base_url('assets/img/logo/UMG.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
+        <img src="<?= base_url('assets/img/logo/UMS.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
+        <img src="<?= base_url('assets/img/logo/UMMI.png'); ?>" alt="Logo" style="width: 10%;">
+        </div>
+      <!-- <a href="#about" class="about-btn scrollto">About The Event</a> -->
     </div>
   </section>
 
