@@ -46,10 +46,7 @@ class Presenter extends CI_Controller
                     $size = round($uploadData['file_size']);
 
                     if ($size > $maxsize) {
-                        // $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
-                        $this->session->set_flashdata('message', 'Failed');
-                        $this->session->set_flashdata('text', 'File too large! File must be less than 2 megabytes.');
-                        $this->session->set_flashdata('icon', 'error');
+                        $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
                     } else {
                         // Save payment data for each selected submission
                         $selectedSubmissions = $this->input->post('selected_submissions');
