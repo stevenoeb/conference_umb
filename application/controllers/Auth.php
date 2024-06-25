@@ -82,7 +82,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'Email already registered'
         ]);
-        $this->form_validation->set_rules('role_id', 'Role', 'required|trim');
+        $this->form_validation->set_rules('role_id', 'Role', 'required|trim|greater_than[0]');
         $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
             'matches' => 'Password does not match',
             'min_length' => 'Password too short'
@@ -122,7 +122,7 @@ class Auth extends CI_Controller
             $this->_sendEmail($token, 'verify');
 
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Please check your email to activate your account</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Please check your email and activate your acount</div>');
             redirect('auth/login');
         }
     }
@@ -132,8 +132,8 @@ class Auth extends CI_Controller
         $config = [
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'sulthanrifqi46@gmail.com',
-            'smtp_pass' => 'sldudkllhnpzqola ',
+            'smtp_user' => 'acst@umbandung.ac.id',
+            'smtp_pass' => 'scyxtavmbzrdanvq  ',
             'smtp_port' => 465,
             'mailtype' => 'html',
             'charset' => 'utf-8',
@@ -142,7 +142,7 @@ class Auth extends CI_Controller
 
         $this->load->library('email', $config);
         $this->email->initialize($config);
-        $this->email->from('sulthanrifqi46@gmail.com', 'Universitas Muhammadiyah Bandung');
+        $this->email->from('acst@umbandung.ac.id', 'Universitas Muhammadiyah Bandung');
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
