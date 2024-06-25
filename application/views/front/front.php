@@ -48,6 +48,7 @@
       <div class="logo-container" style="display: flex; align-items: center; justify-content: center;">
         <img src="<?= base_url('assets/img/logo/UMG.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
         <img src="<?= base_url('assets/img/logo/UMS.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
+        <img src="<?= base_url('assets/img/logo/UHAMKA.webp'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
         <img src="<?= base_url('assets/img/logo/UMMI.png'); ?>" alt="Logo" style="width: 10%;">
       </div>
       <!-- <a href="#about" class="about-btn scrollto">About The Event</a> -->
