@@ -159,6 +159,7 @@
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="video_link" name="video_link" placeholder="Link Video Presentation" onkeyup="stoppedTyping()">
+                        <?= form_error('video_link', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="modal-footer">

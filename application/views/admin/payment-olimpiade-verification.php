@@ -51,12 +51,12 @@
                                     <td><?= $p['name'] ?></td>
                                     <td><a href="" class="badge badge-pill badge-primary" data-toggle="modal" data-target="#paymentModal<?= $start; ?>">Lihat Bukti Pembayaran</a></td>
                                     <td>
-                                        <span class="badge <?= ($p['is_paid'] == "unpaid") ? "badge-danger" : "badge-success" ?>"><?= $p['is_paid']; ?></span>
+                                        <span class="badge <?= ($p['is_paid'] == "unpaid") ? "badge-danger" : ($p['is_paid'] == "paid" ? "badge-success" : "badge-warning") ?>"><?= $p['is_paid']; ?></span>
                                     </td>
                                     <td>
                                         <?php if ($p['is_paid'] == "paid") : ?>
                                             <input type="button" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
-                                        <?php elseif ($p['is_paid'] == "unpaid") : ?>
+                                        <?php elseif ($p['is_paid'] == "pending") : ?>
                                             <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
                                         <?php endif; ?>
                                     </td>

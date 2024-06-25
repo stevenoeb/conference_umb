@@ -479,6 +479,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	background-size: cover;
 	overflow: hidden;
 	position: relative;
+	margin-bottom: 50px;
 }
 
 #intro:before {
@@ -495,7 +496,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	top: 90px;
+	top: 0;
 	right: 0;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -521,6 +522,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-weight: 600;
 	text-transform: uppercase;
 }
+
+#intro h2 {
+	color: #fff;
+	font-family: "Raleway", sans-serif;
+	font-size: 36px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
 
 #intro h1 span {
 	color: #f82249;
@@ -666,6 +676,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	justify-content: center;
 	align-items: center;
 	background: #fff;
+	flex-wrap: wrap;
 }
 
 .navigasion {
@@ -680,8 +691,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .navigasion:hover {
+	text-decoration: none;
 	cursor: pointer;
-	color: #f82249;
+	color: #fff;
 	background-color: #f82249;
 	transition: cubic-bezier(0.215, 0.061, 0.355, 1) ease-in-out;
 	transform: scale(110%);
@@ -697,9 +709,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .navigasion img {
 	display: block;
-	/* Membuat gambar menjadi blok sehingga teks berada di bawahnya */
 	margin: auto;
-	/* Pusatkan gambar */
+	max-width: 100%;
+	height: auto;
 }
 
 .popup-overlay {
@@ -742,6 +754,20 @@ body.mobile-nav-active #mobile-nav-toggle {
 	color: #fff;
 	border: none;
 	cursor: pointer;
+}
+
+@media (max-width: 600px) {
+	.navigasion {
+		width: 100%;
+		padding: 15px;
+		margin-bottom: 20px;
+		font-size: 16px;
+		/* Adjust font size for smaller screens */
+	}
+
+	.navigasion img {
+		max-width: 50px;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -1694,16 +1720,25 @@ body.mobile-nav-active #mobile-nav-toggle {
 		display: inline;
 	}
 
+	#intro .logo-container {
+		margin: 1.5rem 0;
+		width: 120%;
+	}
+
 	#intro .intro-container {
-		top: 0;
+		top: 0 !important;
 	}
 
 	#intro h1 {
-		font-size: 34px;
+		font-size: 2rem !important;
 	}
 
 	#intro p {
-		font-size: 16px;
+		font-size: 1rem !important;
+	}
+
+	#intro h2 {
+		font-size: 1.5rem !important;
 	}
 
 	#schedule .nav-tabs a {
@@ -1731,9 +1766,21 @@ body.mobile-nav-active #mobile-nav-toggle {
 	}
 }
 
-@media (max-width: 574px) {
+@media (max-width: 568px) {
 	#venue .venue-info h3 {
 		font-size: 24px;
+	}
+
+	#intro h1 {
+		font-size: 1.2rem;
+	}
+
+	#intro p {
+		font-size: 0.8rem;
+	}
+
+	#intro h2 {
+		font-size: 1rem;
 	}
 }
 
@@ -1741,21 +1788,49 @@ body.mobile-nav-active #mobile-nav-toggle {
 	#schedule .nav-tabs a {
 		padding: 8px 30px;
 	}
+
+	#intro h1 {
+		font-size: 1.2rem;
+	}
+
+	#intro p {
+		font-size: 0.8rem;
+	}
+
+	#intro h2 {
+		font-size: 1rem;
+	}
 }
 
 @media (max-width: 460px) {
 	#subscribe button {
 		margin-top: 10px;
 	}
+
+	#intro h1 {
+		font-size: 1.2rem;
+	}
+
+	#intro p {
+		font-size: 0.8rem;
+	}
+
+	#intro h2 {
+		font-size: 1rem;
+	}
 }
 
 @media (max-width: 1500px) {
+	#intro .logo-container {
+		margin: 1rem 0;
+	}
+
 	#intro .intro-container {
 		top: 0;
 	}
 
 	#intro h1 {
-		font-size: 48px;
+		font-size: 3rem;
 	}
 
 	#intro p {

@@ -18,6 +18,19 @@
                     <button type="button" class="btn btn-danger btn-sm mt-2" onclick="cancelPreview()">Cancel</button>
                 </div>
             </div>
+            <?php if (empty($olimpiade_unpaid)) : ?>
+                <p>No olimpiade available for payment.</p>
+            <?php else : ?>
+                <div class="form-group mb-5">
+                    <p>Olimpiade need to Pay : </p>
+                    <?php foreach ($olimpiade_unpaid as $ou) : ?>
+                        <?php if ($ou['is_paid'] === 'unpaid') : ?>
+                            <input type="hidden" name="id" value="<?= $ou['id'] ?>">
+                            <span>Link Video: <a href="<?= $ou['link_video'] ?>" target="_blank"><?= $ou['link_video'] ?></a> - 30,000 IDR</span>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary" id="upload_button" disabled>Submit</button>
         </form>
 

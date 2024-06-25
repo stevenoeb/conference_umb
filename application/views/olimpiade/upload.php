@@ -4,8 +4,10 @@
     <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
     <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
+
     <div class="row">
         <div class="col-md-8">
+            <?= $this->session->flashdata('olimpiade_message'); ?>
             <div class="card">
                 <div class="card-header">
                     Upload Video Link
@@ -17,7 +19,7 @@
                     <?php echo form_open('olimpiade/upload'); ?>
                     <div class="form-group">
                         <label for="video_link">Video Link</label>
-                        <input type="text" name="video_link" id="video_link" class="form-control" placeholder="Enter video link" onkeyup="stoppedTyping()">
+                        <input type="text" name="video_link" id="video_link" class="form-control" placeholder="Enter video link" onkeyup="stoppedTyping()" <?= ($olimpiade) ? 'readonly' : ''; ?>>
                     </div>
                     <button type="submit" class="btn btn-primary" id="upload_button" disabled>Upload</button>
                     <?php echo form_close(); ?>
