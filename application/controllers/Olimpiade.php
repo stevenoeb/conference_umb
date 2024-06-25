@@ -30,7 +30,7 @@ class Olimpiade extends CI_Controller
         $data['olimpiade'] = $this->olimpiade->getOlimpiadeVerify();
         if (!$data['olimpiade']) {
         } else {
-            $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">Anda hanya boleh upload olimpiade <b>1x</b>!</div>');
+            $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">You can only upload one Olympiad!</div>');
         }
 
         $this->form_validation->set_rules('video_link', 'Video Link', 'required|valid_url');
