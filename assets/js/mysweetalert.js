@@ -2,7 +2,7 @@ const flashDataBtn = $('.flash-data').data('flashdata');
 if (flashDataBtn) {
 	Swal.fire({
 		title: flashDataBtn,
-		text: 'Silahkan lanjutkan ke menu "My Conference" untuk Upload Link Video.',
+		text: 'Please proceed to "My Conference" menu to Upload Video Link.',
 		icon: 'success'
 	});
 }
@@ -39,3 +39,7 @@ $('.mc-delete-btn').on('click', function (e) {
 		}
 	});
 });
+
+// $('.accept-btn').on('click', function (e) {
+// 	e.preventDefault();
+// })

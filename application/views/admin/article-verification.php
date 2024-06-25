@@ -62,10 +62,10 @@
                                         </td>
                                         <td>
                                             <?php if ($article['is_accept'] == "accepted") : ?>
-                                                <input type="submit" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
+                                                <input type="button" class="btn btn-sm btn-secondary rounded-pill" value="Accept" disabled />
                                                 <!-- <a href="#!" class="badge badge-danger d-none">Decline</a> -->
                                             <?php elseif ($article['is_accept'] == "unaccept") : ?>
-                                                <input type="submit" class="btn btn-sm btn-outline-info rounded-pill" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
+                                                <input type="submit" class="btn btn-sm btn-outline-info rounded-pill accept-btn" name="accept" value="Accept" onclick="return confirm('Are you sure?')" />
                                                 <!-- <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill" name="decline">Decline</button> -->
                                             <?php endif; ?>
 
