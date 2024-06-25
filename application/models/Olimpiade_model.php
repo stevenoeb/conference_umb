@@ -35,11 +35,15 @@ class Olimpiade_model extends CI_Model
         return $this->db->get('olimpiade_submissions')->row_array();
     }
 
-    public function getOlimpiadeUnpaid()
+    public function getOlimpiadeUnpaid($id)
     {
-        $this->db->select('olimpiade_submissions.*, user.name');
+        $this->db->select('olimpiade_submissions.*, user.name, user.id');
         $this->db->join('user', 'user.id = olimpiade_submissions.user_id');
-        $this->db->where('is_paid', 'unpaid');
+        $condition = [
+            'is_paid' => 'unpaid',
+            'user.id' => $id
+        ];
+        $this->db->where($condition);
         return $this->db->get('olimpiade_submissions')->result_array();
     }
 }

@@ -64,7 +64,7 @@ class Olimpiade extends CI_Controller
         $this->load->model('Olimpiade_model', 'olimpiade');
 
         $data['olimpiade_id'] = $this->olimpiade->getOlimpiadeVerify($data['user']['id']);
-        $data['olimpiade_unpaid'] = $this->olimpiade->getOlimpiadeUnpaid();
+        $data['olimpiade_unpaid'] = $this->olimpiade->getOlimpiadeUnpaid($data['user']['id']);
 
         $config['upload_path'] = './assets/data/pembayaran_olimpiade';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
