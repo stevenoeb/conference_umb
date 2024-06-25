@@ -2,7 +2,7 @@ const flashDataBtn = $('.flash-data').data('flashdata');
 if (flashDataBtn) {
 	Swal.fire({
 		title: flashDataBtn,
-		text: 'Silahkan lanjutkan ke menu "My Conference" untuk Upload Link Video.',
+		text: 'Please proceed to the "My Conference" menu to Upload Video Link.',
 		icon: 'success'
 	});
 }
