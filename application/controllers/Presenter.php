@@ -43,9 +43,11 @@ class Presenter extends CI_Controller
                 if ($this->upload->do_upload('payment_proof')) {
                     $uploadData = $this->upload->data();
                     $image = $uploadData['file_name'];
+                    $size = round($uploadData['file_size']);
 
-                    if ($uploadData['file_size'] > $maxsize) {
-                        $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
+                    if ($size > $maxsize) {
+                        // $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
+                        echo var_dump($size);
                     } else {
                         // Save payment data for each selected submission
                         $selectedSubmissions = $this->input->post('selected_submissions');
@@ -66,7 +68,7 @@ class Presenter extends CI_Controller
                         $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
                         $this->session->set_flashdata('icon', 'success');
                     }
-                    redirect('presenter/payment');
+                    // redirect('presenter/payment');
                 } else {
                     $data['error'] = $this->upload->display_errors();
                 }
