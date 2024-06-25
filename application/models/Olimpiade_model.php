@@ -27,10 +27,11 @@ class Olimpiade_model extends CI_Model
         return $this->submission_model->insert_submission($user_id, $video_link);
     }
 
-    public function getOlimpiadeVerify()
+    public function getOlimpiadeVerify($id)
     {
         $this->db->select('user.id AS `userID`, olimpiade_submissions.id AS `olimpiadeID`');
         $this->db->join('user', 'user.id = olimpiade_submissions.user_id');
+        $this->db->where('user.id', $id);
         return $this->db->get('olimpiade_submissions')->row_array();
     }
 

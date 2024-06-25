@@ -27,7 +27,7 @@ class Olimpiade extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Olimpiade_model', 'olimpiade');
 
-        $data['olimpiade'] = $this->olimpiade->getOlimpiadeVerify();
+        $data['olimpiade'] = $this->olimpiade->getOlimpiadeVerify($data['user']['id']);
         if (!$data['olimpiade']) {
         } else {
             $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">You can only upload one Olympiad!</div>');
@@ -63,12 +63,12 @@ class Olimpiade extends CI_Controller
 
         $this->load->model('Olimpiade_model', 'olimpiade');
 
-        $data['olimpiade_id'] = $this->olimpiade->getOlimpiadeVerify();
+        $data['olimpiade_id'] = $this->olimpiade->getOlimpiadeVerify($data['user']['id']);
         $data['olimpiade_unpaid'] = $this->olimpiade->getOlimpiadeUnpaid();
 
         $config['upload_path'] = './assets/data/pembayaran_olimpiade';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
-        $config['max_size'] = 2048; // 2 MB
+        $maxsize = 3072; // ~2MB
 
         $this->load->library('upload', $config);
 
@@ -83,19 +83,23 @@ class Olimpiade extends CI_Controller
             $file_data = $this->upload->data();
             $file_name = $file_data['file_name'];
 
-            $this->db->insert('payment_olimpiade', [
-                'image' => $file_name,
-                'olimpiade_id' => $data['olimpiade_id']['olimpiadeID'],
-                'user_id' => $data['user']['id'],
-                'upload_date' => date('Y-m-d H:i:s')
-            ]);
+            if ($file_data['file_size'] > $maxsize) {
+                $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
+            } else {
+                $this->db->insert('payment_olimpiade', [
+                    'image' => $file_name,
+                    'olimpiade_id' => $data['olimpiade_id']['olimpiadeID'],
+                    'user_id' => $data['user']['id'],
+                    'upload_date' => date('Y-m-d H:i:s')
+                ]);
 
-            $this->db->where('id', $data['olimpiade_id']['olimpiadeID']);
-            $this->db->update('olimpiade_submissions', ['is_paid' => 'pending']);
+                $this->db->where('id', $data['olimpiade_id']['olimpiadeID']);
+                $this->db->update('olimpiade_submissions', ['is_paid' => 'pending']);
 
-            $this->session->set_flashdata('message', 'Success');
-            $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
-            $this->session->set_flashdata('icon', 'success');
+                $this->session->set_flashdata('message', 'Success');
+                $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+                $this->session->set_flashdata('icon', 'success');
+            }
             redirect('olimpiade/upload_payment');
         }
     }

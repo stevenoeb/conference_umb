@@ -5,6 +5,8 @@
         <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
         <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
+        <?= $this->session->flashdata('payment_file'); ?>
+
         <!-- Payment Proof Upload Form -->
         <form action="<?= base_url('presenter/payment') ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">

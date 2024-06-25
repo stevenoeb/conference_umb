@@ -36,7 +36,7 @@ class Presenter extends CI_Controller
             if (!empty($this->input->post('selected_submissions'))) {
                 $config['upload_path'] = './assets/data/pembayaran_conference/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $config['max_size'] = 2048; // 2MB
+                $maxsize = 3072; // ~2MB
 
                 $this->load->library('upload', $config);
 
@@ -44,24 +44,28 @@ class Presenter extends CI_Controller
                     $uploadData = $this->upload->data();
                     $image = $uploadData['file_name'];
 
-                    // Save payment data for each selected submission
-                    $selectedSubmissions = $this->input->post('selected_submissions');
-                    // echo var_dump($selectedSubmissions);
-                    foreach ($selectedSubmissions as $conference_id) {
-                        $paymentData = [
-                            'user_id' => $user_id,
-                            'image' => $image,
-                            'conference_id' => $conference_id
-                        ];
-                        $this->myconference->savePaymentData($paymentData);
+                    if ($uploadData['file_size'] > $maxsize) {
+                        $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
+                    } else {
+                        // Save payment data for each selected submission
+                        $selectedSubmissions = $this->input->post('selected_submissions');
+                        // echo var_dump($selectedSubmissions);
+                        foreach ($selectedSubmissions as $conference_id) {
+                            $paymentData = [
+                                'user_id' => $user_id,
+                                'image' => $image,
+                                'conference_id' => $conference_id
+                            ];
+                            $this->myconference->savePaymentData($paymentData);
 
-                        // Update is_paid status
-                        $this->myconference->updateIsPaidStatus($conference_id);
+                            // Update is_paid status
+                            $this->myconference->updateIsPaidStatus($conference_id);
+                        }
+
+                        $this->session->set_flashdata('message', 'Success');
+                        $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+                        $this->session->set_flashdata('icon', 'success');
                     }
-
-                    $this->session->set_flashdata('message', 'Success');
-                    $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
-                    $this->session->set_flashdata('icon', 'success');
                     redirect('presenter/payment');
                 } else {
                     $data['error'] = $this->upload->display_errors();

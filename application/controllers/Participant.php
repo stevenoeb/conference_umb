@@ -27,7 +27,7 @@ class Participant extends CI_Controller
 
         $config['upload_path'] = './assets/data/pembayaran_participant';
         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
-        $config['max_size'] = 2048; // 2 MB
+        $maxsize = 3072; // ~2MB
 
         $this->load->library('upload', $config);
 
@@ -42,15 +42,20 @@ class Participant extends CI_Controller
             $file_data = $this->upload->data();
             $file_name = $file_data['file_name'];
 
-            $this->db->insert('payment_participant', [
-                'user_id' => $data['user']['id'],
-                'image' => $file_name,
-                'upload_date' => date('Y-m-d H:i:s')
-            ]);
+            if ($file_data['file_size'] > $maxsize) {
+                $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
+            } else {
+                $this->db->insert('payment_participant', [
+                    'user_id' => $data['user']['id'],
+                    'image' => $file_name,
+                    'upload_date' => date('Y-m-d H:i:s')
+                ]);
 
-            $this->session->set_flashdata('message', 'Success');
-            $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
-            $this->session->set_flashdata('icon', 'success');
+                $this->session->set_flashdata('message', 'Success');
+                $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+                $this->session->set_flashdata('icon', 'success');
+            }
+
             redirect('participant/upload_payment');
         }
     }

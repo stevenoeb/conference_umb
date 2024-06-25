@@ -4,7 +4,9 @@
     <div class="flash-data-text" data-flashdata-toast-text="<?= $this->session->flashdata('text') ?>"></div>
     <div class="flash-data-icon" data-flashdata-toast-icon="<?= $this->session->flashdata('icon') ?>"></div>
 
+
     <div class="container mt-5">
+        <?= $this->session->flashdata('payment_file'); ?>
         <!-- Payment Proof Upload Form -->
         <form action="<?= base_url('olimpiade/upload_payment') ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
