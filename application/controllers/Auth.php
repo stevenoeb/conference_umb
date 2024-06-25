@@ -142,16 +142,16 @@ class Auth extends CI_Controller
 
         $this->load->library('email', $config);
         $this->email->initialize($config);
-        $this->email->from('acst@umbandung.ac.id', 'Universitas Muhammadiyah Bandung');
+        $this->email->from('acst@umbandung.ac.id', 'ACST UM Bandung');
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
 
             $this->email->subject('Account Activation');
-            $this->email->message('Please click the link below to activate your account:<a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activated</a>');
+            $this->email->message('Please click the link below to activate your account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activated</a>');
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
-            $this->email->message('Please click the link below to reset your password :<a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+            $this->email->message('Please click the link below to reset your password : <a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
 
         if ($this->email->send()) {
