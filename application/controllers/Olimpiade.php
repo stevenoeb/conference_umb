@@ -58,6 +58,55 @@ class Olimpiade extends CI_Controller
 
     public function upload_payment()
     {
+        //     $data['title'] = 'Payment Conference';
+        //     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        //     $this->load->model('Olimpiade_model', 'olimpiade');
+
+        //     $data['olimpiade_id'] = $this->olimpiade->getOlimpiadeVerify($data['user']['id']);
+        //     $data['olimpiade_unpaid'] = $this->olimpiade->getOlimpiadeUnpaid($data['user']['id']);
+
+        //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['payment_proof']['name'])) {
+        //         $config['upload_path'] = './assets/data/pembayaran_olimpiade';
+        //         $config['allowed_types'] = 'jpg|jpeg|png|pdf';
+        //         $config['max_size'] = 3072;
+
+        //         $this->load->library('upload', $config);
+
+        //         if ($this->upload->do_upload('payment_proof')) {
+        //             $file_data = $this->upload->data();
+        //             $file_name = $file_data['file_name'];
+
+        //             $this->db->insert('payment_olimpiade', [
+        //                 'image' => $file_name,
+        //                 'olimpiade_id' => $data['olimpiade_id']['olimpiadeID'],
+        //                 'user_id' => $data['user']['id'],
+        //                 'upload_date' => date('Y-m-d H:i:s')
+        //             ]);
+
+        //             $this->db->where('id', $data['olimpiade_id']['olimpiadeID']);
+        //             $this->db->update('olimpiade_submissions', ['is_paid' => 'pending']);
+
+        //             $this->session->set_flashdata('message', 'Success');
+        //             $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+        //             $this->session->set_flashdata('icon', 'success');
+        //         } else {
+        //             $data['error'] = $this->upload->display_errors();
+        //             if ($data['error'] == '<p>The file you are attempting to upload is larger than the permitted size.</p>') {
+        //                 $data['error'] = 'File too large! File must be less than 2 megabytes.';
+        //             };
+        //             $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">' . $data['error'] . '</div>');
+        //         }
+        //         redirect('olimpiade/upload_payment');
+        //     }
+
+        //     $this->load->view('templates/header', $data);
+        //     $this->load->view('templates/sidebar', $data);
+        //     $this->load->view('templates/topbar', $data);
+        //     $this->load->view('olimpiade/upload_payment', $data);
+        //     $this->load->view('templates/footer');
+        // }
+
         $data['title'] = 'Payment Conference';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -68,7 +117,7 @@ class Olimpiade extends CI_Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_FILES['payment_proof']['name'])) {
             $config['upload_path'] = './assets/data/pembayaran_olimpiade';
-            $config['allowed_types'] = 'jpg|jpeg|png|pdf';
+            $config['allowed_types'] = 'jpg|jpeg|png';
             $config['max_size'] = 3072;
 
             $this->load->library('upload', $config);
@@ -77,24 +126,30 @@ class Olimpiade extends CI_Controller
                 $file_data = $this->upload->data();
                 $file_name = $file_data['file_name'];
 
-                $this->db->insert('payment_olimpiade', [
-                    'image' => $file_name,
-                    'olimpiade_id' => $data['olimpiade_id']['olimpiadeID'],
-                    'user_id' => $data['user']['id'],
-                    'upload_date' => date('Y-m-d H:i:s')
-                ]);
+                if ($data['olimpiade_id'] && isset($data['olimpiade_id']['olimpiadeID'])) {
+                    $this->db->insert('payment_olimpiade', [
+                        'image' => $file_name,
+                        'olimpiade_id' => $data['olimpiade_id']['olimpiadeID'],
+                        'user_id' => $data['user']['id'],
+                        'upload_date' => date('Y-m-d H:i:s')
+                    ]);
 
-                $this->db->where('id', $data['olimpiade_id']['olimpiadeID']);
-                $this->db->update('olimpiade_submissions', ['is_paid' => 'pending']);
+                    $this->db->where('id', $data['olimpiade_id']['olimpiadeID']);
+                    $this->db->update('olimpiade_submissions', ['is_paid' => 'pending']);
 
-                $this->session->set_flashdata('message', 'Success');
-                $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
-                $this->session->set_flashdata('icon', 'success');
+                    $this->session->set_flashdata('message', 'Success');
+                    $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+                    $this->session->set_flashdata('icon', 'success');
+                } else {
+                    $this->session->set_flashdata('message', 'Error');
+                    $this->session->set_flashdata('text', 'You have not filled out the video link.');
+                    $this->session->set_flashdata('icon', 'error');
+                }
             } else {
                 $data['error'] = $this->upload->display_errors();
                 if ($data['error'] == '<p>The file you are attempting to upload is larger than the permitted size.</p>') {
                     $data['error'] = 'File too large! File must be less than 2 megabytes.';
-                };
+                }
                 $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">' . $data['error'] . '</div>');
             }
             redirect('olimpiade/upload_payment');
