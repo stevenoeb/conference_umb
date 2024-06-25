@@ -134,7 +134,7 @@ class Presenter extends CI_Controller
                 'is_accept' => "unaccept"
             ];
             $this->db->insert('conference_submissions', $data);
-            $this->session->set_flashdata('message', 'New Paper has been added!');
+            $this->session->set_flashdata('message', 'your Paper has been added!');
             redirect('presenter');
         }
     }
@@ -193,7 +193,7 @@ class Presenter extends CI_Controller
             $this->session->set_flashdata('icon', 'success');
         } else {
             // Jika gagal menghapus data, tampilkan pesan kesalahan
-            $this->session->set_flashdata('message', 'Gagal menghapus data.');
+            $this->session->set_flashdata('message', 'Failed to delete data.');
             $this->session->set_flashdata('text', '');
             $this->session->set_flashdata('icon', 'error');
         }
@@ -227,7 +227,7 @@ class Presenter extends CI_Controller
                 // Tampilkan PDF di browser
                 $pdf->Output('abstract_' . $submission_id . '.pdf', 'I'); // 'I' untuk menampilkan di browser
             } else {
-                show_error('Submission tidak ditemukan', 404);
+                show_error('Submission not found', 404);
             }
             // ...
         }

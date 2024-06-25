@@ -122,7 +122,7 @@ class Auth extends CI_Controller
             $this->_sendEmail($token, 'verify');
 
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Please activate your account</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Please check your email to activate your account</div>');
             redirect('auth/login');
         }
     }
