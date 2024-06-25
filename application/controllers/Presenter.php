@@ -88,59 +88,161 @@ class Presenter extends CI_Controller
 
     public function submitPaper()
     {
+        // $data['title'] = 'Conference and Submit';
+        // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        // $this->load->model('Conference_model', 'conference');
+
+        // // $data['submitPaper'] = $this->conference->getSubmitPaper();
+        // $this->load->library('form_validation');
+        // $this->form_validation->set_rules('title', 'Title', 'required|trim');
+        // $this->form_validation->set_rules('abstract', 'Abstract', 'required|trim');
+        // if (empty($_FILES['journal_path']['name'])) $this->form_validation->set_rules('journal_path', 'File FULLPAPER', 'required');
+        // if (empty($_FILES['poster_path']['name'])) $this->form_validation->set_rules('poster_path', 'Poster', 'required');
+
+        // if ($this->form_validation->run() == FALSE) {
+        //     $this->load->view('templates/header', $data);
+        //     $this->load->view('templates/sidebar', $data);
+        //     $this->load->view('templates/topbar', $data);
+        //     $this->load->view('presenter/submit-paper', $data);
+        //     $this->load->view('templates/footer');
+        // } else {
+        //     $upload_journal = $_FILES['journal_path']['name'];
+        //     $upload_journal = str_replace(' ', '_', $upload_journal);
+        //     $config = array();
+        //     $config['allowed_types'] = 'docx|pdf|doc';
+        //     $config['upload_path'] = './assets/data/jurnal/';
+        //     $this->load->library('upload', $config, 'uploadjurnal');
+        //     $this->uploadjurnal->initialize($config);
+        //     $this->uploadjurnal->do_upload('journal_path');
+        //     $this->uploadjurnal->display_errors();
+
+        //     $upload_poster = $_FILES['poster_path']['name'];
+        //     $upload_poster = str_replace(' ', '_', $upload_poster);
+        //     $config = array();
+        //     $config['allowed_types'] = 'jpg|png|jpeg';
+        //     $config['upload_path'] = './assets/data/poster/';
+        //     $this->load->library('upload', $config, 'uploadposter');
+        //     $this->uploadposter->initialize($config);
+        //     $this->uploadposter->do_upload('poster_path');
+        //     $this->uploadposter->display_errors();
+
+        //     $data = [
+        //         'title' => $this->input->post('title'),
+        //         'user_id' => $data['user']['id'],
+        //         'publish_journal' => $this->input->post('publish_journal'),
+        //         'topic' => $this->input->post('topic'),
+        //         'abstract' => $this->input->post('abstract'),
+        //         'journal_path' => $upload_journal,
+        //         'poster_path' => $upload_poster,
+        //         'is_paid' => "unpaid",
+        //         'is_accept' => "unaccept"
+        //     ];
+        //     $this->db->insert('conference_submissions', $data);
+        //     $this->session->set_flashdata('message', 'your Paper has been added!');
+        //     redirect('presenter');
+        // }
+
         $data['title'] = 'Conference and Submit';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->model('Conference_model', 'conference');
 
-        // $data['submitPaper'] = $this->conference->getSubmitPaper();
-        $this->load->library('form_validation');
+        // Validasi form
         $this->form_validation->set_rules('title', 'Title', 'required|trim');
         $this->form_validation->set_rules('abstract', 'Abstract', 'required|trim');
         if (empty($_FILES['journal_path']['name'])) $this->form_validation->set_rules('journal_path', 'File FULLPAPER', 'required');
         if (empty($_FILES['poster_path']['name'])) $this->form_validation->set_rules('poster_path', 'Poster', 'required');
 
         if ($this->form_validation->run() == FALSE) {
+            // Jika validasi gagal, tampilkan kembali form dengan pesan kesalahan
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('presenter/submit-paper', $data);
             $this->load->view('templates/footer');
         } else {
-            $upload_journal = $_FILES['journal_path']['name'];
-            $upload_journal = str_replace(' ', '_', $upload_journal);
-            $config = array();
-            $config['allowed_types'] = 'docx|pdf|doc';
-            $config['upload_path'] = './assets/data/jurnal/';
-            $this->load->library('upload', $config, 'uploadjurnal');
-            $this->uploadjurnal->initialize($config);
-            $this->uploadjurnal->do_upload('journal_path');
-            $this->uploadjurnal->display_errors();
+            // Proses upload journal_path
+            $config_journal = [
+                'upload_path' => './assets/data/jurnal/',
+                'allowed_types' => 'docx|pdf|doc',
+                'overwrite' => TRUE
+            ];
 
-            $upload_poster = $_FILES['poster_path']['name'];
-            $upload_poster = str_replace(' ', '_', $upload_poster);
-            $config = array();
-            $config['allowed_types'] = 'jpg|png|jpeg';
-            $config['upload_path'] = './assets/data/poster/';
-            $this->load->library('upload', $config, 'uploadposter');
-            $this->uploadposter->initialize($config);
-            $this->uploadposter->do_upload('poster_path');
-            $this->uploadposter->display_errors();
+            $this->load->library('upload', $config_journal, 'upload_journal');
+            if (!$this->upload_journal->do_upload('journal_path')) {
+                $error = $this->upload_journal->display_errors();
+                $this->session->set_flashdata('error_message', $error);
+                redirect('presenter/submitPaper'); // Redirect kembali ke halaman form
+                return; // Keluar dari controller
+            }
 
-            $data = [
+            // Ambil data file journal yang berhasil diupload
+            $upload_data_journal = $this->upload_journal->data();
+            $journal_path = $upload_data_journal['file_name'];
+
+            // Proses upload poster_path
+            $config_poster = [
+                'upload_path' => './assets/data/poster/',
+                'allowed_types' => 'jpg|jpeg|png',
+                'overwrite' => TRUE
+            ];
+
+            $this->load->library('upload', $config_poster, 'upload_poster');
+            if (!$this->upload_poster->do_upload('poster_path')) {
+                // Hapus file journal yang sudah terupload jika upload poster gagal
+                if (file_exists('./assets/data/jurnal/' . $journal_path)) {
+                    unlink('./assets/data/jurnal/' . $journal_path);
+                }
+
+                $error = $this->upload_poster->display_errors();
+                $this->session->set_flashdata('error_message', $error);
+                redirect('presenter/submitPaper'); // Redirect kembali ke halaman form
+                return; // Keluar dari controller
+            }
+
+            // Ambil data file poster yang berhasil diupload
+            $upload_data_poster = $this->upload_poster->data();
+            $poster_path = $upload_data_poster['file_name'];
+
+            // Jika kedua berkas berhasil diunggah, simpan data ke database
+            $data_insert = [
                 'title' => $this->input->post('title'),
                 'user_id' => $data['user']['id'],
                 'publish_journal' => $this->input->post('publish_journal'),
                 'topic' => $this->input->post('topic'),
                 'abstract' => $this->input->post('abstract'),
-                'journal_path' => $upload_journal,
-                'poster_path' => $upload_poster,
+                'journal_path' => $journal_path,
+                'poster_path' => $poster_path,
                 'is_paid' => "unpaid",
                 'is_accept' => "unaccept"
             ];
-            $this->db->insert('conference_submissions', $data);
-            $this->session->set_flashdata('message', 'your Paper has been added!');
+
+            // Simpan data ke database
+            $this->db->insert('conference_submissions', $data_insert);
+
+            // Set pesan flash untuk memberitahu pengguna bahwa pengiriman berhasil
+            $this->session->set_flashdata('message', 'Your Paper has been added!');
+
+            // Redirect ke halaman presenter atau halaman dashboard yang sesuai
             redirect('presenter');
         }
+    }
+    // Callback function untuk memeriksa tipe berkas
+    public function check_file_type($file, $type)
+    {
+        $allowed_types = ['journal_path' => 'docx|pdf|doc', 'poster_path' => 'jpg|jpeg|png'];
+
+        $config['upload_path'] = ($type == 'journal_path') ? './assets/data/jurnal/' : './assets/data/poster/';
+        $config['allowed_types'] = $allowed_types[$type];
+        $config['overwrite'] = TRUE; // Jika ingin mengganti berkas dengan nama yang sama
+
+        $this->load->library('upload', $config, 'upload_' . $type);
+        $this->upload->{$type} = $file;
+
+        if (!$this->upload->{$type}->do_upload($type)) {
+            $this->form_validation->set_message('check_file_type', $this->upload->{$type}->display_errors());
+            return FALSE;
+        }
+
+        return TRUE;
     }
 
     public function myconference()

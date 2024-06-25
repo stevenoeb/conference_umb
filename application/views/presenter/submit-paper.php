@@ -9,6 +9,11 @@
                 </h6>
             </div>
             <div class="card-body">
+                <?php if ($this->session->flashdata('error_message')) : ?>
+                    <div class="alert alert-danger">
+                        <?= $this->session->flashdata('error_message'); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
