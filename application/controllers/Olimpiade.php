@@ -42,14 +42,14 @@ class Olimpiade extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             if ($data['olimpiade']) {
-                $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">Anda hanya boleh upload olimpiade <b>1x</b>!</div>');
+                $this->session->set_flashdata('olimpiade_message', '<div class="alert alert-info" role="alert">You can only upload one Olympiad!</div>');
                 redirect('olimpiade/upload');
             } else {
                 $video_link = $this->input->post('video_link');
                 $this->olimpiade->insert_video_link($video_link);
 
                 $this->session->set_flashdata('message', 'Success');
-                $this->session->set_flashdata('text', 'Link video berhasil diupload!');
+                $this->session->set_flashdata('text', 'Video link uploaded successfully!');
                 $this->session->set_flashdata('icon', 'success');
                 redirect('olimpiade');
             }

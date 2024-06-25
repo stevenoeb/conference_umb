@@ -62,14 +62,14 @@ class Publisher extends CI_Controller
         $data = $this->db->get_where('conference_submissions', ['id' => $id])->row();
         if ($data) {
             if (!$data->journal_path) {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf, data yang Anda cari tidak ditemukan.</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Sorry, the data you are looking for was not found.</div>');
                 redirect('publisher');
             } else {
                 $path = 'assets/data/jurnal/' . $data->journal_path;
                 if (file_exists($path)) {
                     force_download($path, NULL);
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File tidak ditemukan!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">File not found!</div>');
                     redirect('publisher');
                 }
             }
