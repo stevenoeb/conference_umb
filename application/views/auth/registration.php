@@ -20,7 +20,7 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control" style="font-size:0.8rem; border-radius: 10rem; height: 3rem; padding: 0 1rem" id="role_id" name="role_id">
-                                    <option selected>Select Your Role</option>
+                                    <option value="0" selected>Select Your Role</option>
                                     <option value="3">Presenter</option>
                                     <option value="4">Olympiad</option>
                                     <option value="6">Participant</option>
