@@ -36,41 +36,40 @@ class Presenter extends CI_Controller
             if (!empty($this->input->post('selected_submissions'))) {
                 $config['upload_path'] = './assets/data/pembayaran_conference/';
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
-                $maxsize = 3072; // ~2MB
+                $config['max_size'] = 3072;
 
                 $this->load->library('upload', $config);
 
                 if ($this->upload->do_upload('payment_proof')) {
                     $uploadData = $this->upload->data();
                     $image = $uploadData['file_name'];
-                    $size = round($uploadData['file_size']);
 
-                    if ($size > $maxsize) {
-                        $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">File too large! File must be less than 2 megabytes.</div>');
-                    } else {
-                        // Save payment data for each selected submission
-                        $selectedSubmissions = $this->input->post('selected_submissions');
-                        // echo var_dump($selectedSubmissions);
-                        foreach ($selectedSubmissions as $conference_id) {
-                            $paymentData = [
-                                'user_id' => $user_id,
-                                'image' => $image,
-                                'conference_id' => $conference_id
-                            ];
-                            $this->myconference->savePaymentData($paymentData);
+                    // Save payment data for each selected submission
+                    $selectedSubmissions = $this->input->post('selected_submissions');
+                    // echo var_dump($selectedSubmissions);
+                    foreach ($selectedSubmissions as $conference_id) {
+                        $paymentData = [
+                            'user_id' => $user_id,
+                            'image' => $image,
+                            'conference_id' => $conference_id
+                        ];
+                        $this->myconference->savePaymentData($paymentData);
 
-                            // Update is_paid status
-                            $this->myconference->updateIsPaidStatus($conference_id);
-                        }
-
-                        $this->session->set_flashdata('message', 'Success');
-                        $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
-                        $this->session->set_flashdata('icon', 'success');
+                        // Update is_paid status
+                        $this->myconference->updateIsPaidStatus($conference_id);
                     }
-                    redirect('presenter/payment');
+
+                    $this->session->set_flashdata('message', 'Success');
+                    $this->session->set_flashdata('text', 'Payment proof uploaded successfully!');
+                    $this->session->set_flashdata('icon', 'success');
                 } else {
                     $data['error'] = $this->upload->display_errors();
+                    if ($data['error'] == '<p>The file you are attempting to upload is larger than the permitted size.</p>') {
+                        $data['error'] = 'File too large! File must be less than 2 megabytes.';
+                    };
+                    $this->session->set_flashdata('payment_file', '<div class="alert alert-danger" role="alert">' . $data['error'] . '</div>');
                 }
+                redirect('presenter/payment');
             } else {
                 $this->session->set_flashdata('message', 'Failed');
                 $this->session->set_flashdata('text', 'Please select submission to pay!');
