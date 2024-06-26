@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <div class="col">
                                 <label for="Topic">Topic</label>
-                                <input type="text" name="topic" id="topic" class="form-control" value="Educational Technology" readonly>
+                                <input type="text" name="topic" id="topic" class="form-control" value="Accounting & Technopreneurial" readonly>
                             </div>
                         </div>
                     </div>
