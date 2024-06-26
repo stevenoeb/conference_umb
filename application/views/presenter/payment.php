@@ -30,7 +30,7 @@
                         <?php if ($submission['is_accept'] === 'accepted' && $submission['is_paid'] === 'unpaid') : ?>
                             <li>
                                 <input type="checkbox" name="selected_submissions[]" value="<?= $submission['id'] ?>">
-                                <?= $submission['title'] ?> - 30,000 IDR
+                                <?= $submission['title'] ?> - 150,000 IDR
                             </li>
                         <?php endif; ?>
                     <?php endforeach; ?>

@@ -80,7 +80,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Fixed payment amount -->
-                    <p><strong>Payment Amount:</strong> 30,000 IDR</p>
+                    <p><strong>Payment Amount:</strong> 150,000 IDR</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
