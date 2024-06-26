@@ -55,6 +55,13 @@
                             </a>
                         </div>
                     </div>
+                    <div class="col-md-5">
+                        <div class="box-footer">
+                            <a href="https://docs.google.com/document/d/10t5NWEWX3jNwWnBtj8w2S9_p8hgiJk-d/edit?usp=sharing&ouid=106526089610873602560&rtpof=true&sd=true" class="btn btn-lg btn-info col-md-12" role="button">
+                                <strong>DOWNLOAD TEMPLATE</strong>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
