@@ -133,7 +133,7 @@ class Auth extends CI_Controller
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_user' => 'acst@umbandung.ac.id',
-            'smtp_pass' => 'scyxtavmbzrdanvq  ',
+            'smtp_pass' => 'uuinwaytpycclmma',
             'smtp_port' => 465,
             'mailtype' => 'html',
             'charset' => 'utf-8',

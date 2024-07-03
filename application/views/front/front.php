@@ -49,7 +49,10 @@
         <img src="<?= base_url('assets/img/logo/UMG.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
         <img src="<?= base_url('assets/img/logo/UMS.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
         <img src="<?= base_url('assets/img/logo/UHAMKA.webp'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
-        <img src="<?= base_url('assets/img/logo/UMMI.png'); ?>" alt="Logo" style="width: 10%;">
+        <img src="<?= base_url('assets/img/logo/UMMI.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
+        <img src="<?= base_url('assets/img/logo/UNPAS.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
+        <img src="<?= base_url('assets/img/logo/UMPALOPO.png'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
+        <img src="<?= base_url('assets/img/logo/lpkia.jpg'); ?>" alt="Logo" style="width: 10%; margin-right: 20px;">
       </div>
       <!-- <a href="#about" class="about-btn scrollto">About The Event</a> -->
     </div>
@@ -187,6 +190,58 @@
       </div>
 
     </section>
+
+     <!--==========================
+      Timeline Section
+    ============================-->
+        <!-- <section id="timelines" class="wow fadeInUp">
+    <div class="container">
+      <div class="section-header">
+        <h2>Timeline Event</h2>
+        <p>Here is Timeline</p>
+      </div>
+
+      <div class="timeline">
+        <div class="box">
+          <div class="circle-container">
+            <div class="circle one"></div>
+            <div class="inner-circle"></div>
+            <div class="text-date-container">
+              <div class="text">Abstract submission</div>
+              <div class="Date">July 1-5, 2024</div>
+            </div>
+          </div>
+          <div class="circle-container">
+            <div class="active circle two"></div>
+            <div class="inner-circle"></div>
+            <div class="text-date-container">
+              <div class="text">Full Paper Submission</div>
+              <div class="Date">July 8-12, 2024</div>
+            </div>
+          </div>
+          <div class="circle-container">
+            <div class="circle three"></div>
+            <div class="inner-circle"></div>
+            <div class="text-date-container">
+              <div class="text">Article Presentation <br>and other competitions</div>
+              <div class="Date">July 15-16, 2024</div>
+            </div>
+          </div>
+          <div class="circle-container">
+            <div class="circle four"></div>
+            <div class="inner-circle"></div>
+            <div class="text-date-container">
+              <div class="text">Awarding</div>
+              <div class="Date">July 19th, 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </section>
+
+    </div>
+    </section> -->
 
     <!--==========================
       Schedule Section
@@ -387,6 +442,189 @@
       </div>
 
     </section>
+
+    <!--==========================
+      moderator Section
+    ============================-->
+    <section id="moderator" class="wow fadeInUp">
+      <div class="container">
+        <div class="section-header">
+          <h2>apa ya namanya</h2>
+          <p>Here are some of our speakers</p>
+        </div>
+
+        <div class="tab-content row justify-content-center">
+
+          <!-- Schdule Day 1 -->
+          <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08.00 - 08.15</time></div>
+              <div class="col-md-10">
+                <h4>Opening Ceremony</h4>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08.15 - 08.20</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Recitation of the Holy Quran</h4>
+                <!-- <p>Facere provident incidunt quos voluptas.</p> -->
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08.20 - 08.30</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/2.jpg" alt="Hubert Hirthe">
+                </div> -->
+                <h4>Singing a song</h4>
+                <p>Indonesia Raya and Sang Surya</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08.30 - 08.40</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/3.jpg" alt="Cole Emmerich">
+                </div> -->
+                <h4>Committee Chairman’s Report</h4>
+                <p>Yasar M Farhan</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08.40 - 08.55</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/logo/LOGO.png" alt="Jack Christiansen">
+                </div> -->
+                <h4>Opening of ACST 2024</h4>
+                <p>Opening speech from Prof. Dr. Ir. Herry Suhardiyanto, M.Sc., IPU.</p>
+              </div>
+            </div>
+
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08.55 - 09.10</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/5.jpg" alt="Alejandrin Littel">
+                </div> -->
+                <h4>Keynote Speaker</h4>
+                <p>Dr. Hj. Atalia Pratatya, SIP., M.I.Kom.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>09.10 - 09.15</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/6.jpg" alt="Willow Trantow">
+                </div> -->
+                <h4>Group Photo</h4>
+                <!-- <p>Voluptatem et alias dolorum est aut sit enim neque veritatis.</p> -->
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>09.15 - 09.45</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Speaker 1</h4>
+                <p>Bobur Subirov</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>09.45 - 10.15</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Speaker 2</h4>
+                <p>Lili Susanti Binti Samsurijal</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>10.15 - 10.45</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Speaker 3</h4>
+                <p>Dr. Sigit Hermawan, SE., M.Si., CIQaR., CRP.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>10.45 - 11.15</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Speaker 4</h4>
+                <p>Dr. Bisa Sarkar</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>10.45 - 11.15</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Break</h4>
+                <!-- <p>Name of Speaker 4</p> -->
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>13.00 - 13.30</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>QNA Session</h4>
+                <p>QNA Sessinon with Speaker</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>13.30 - 14.30</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Winners Announcement</h4>
+                <p>Olympic Winners Announcement</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>14.30 - 15.00</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Closing</h4>
+                <p>Closing Ceremony</p>
+              </div>
+            </div>
+
+          </div>
+          <!-- End Schdule Day 1 -->
+
+        </div>
+</Section>
 
     <!--==========================
       Venue Section
