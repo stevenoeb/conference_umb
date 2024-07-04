@@ -901,6 +901,137 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 /*--------------------------------------------------------------
+# Timeline Section
+--------------------------------------------------------------*/
+.timeline {
+	width: 100%;
+	height: 40vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.box {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	border-radius: 16px;
+	padding: 23px;
+	background-color: #f7f7f7;	
+	z-index: -1;
+}
+
+.circle {
+	width: 30px;
+	height: 30px;
+	flex-direction: column;
+	background-color: #152b79;
+	border-radius: 50%;
+	position: relative;
+	margin: 12px 0;
+}
+
+.inner-circle {
+    width: 20px; /* Ukuran lingkaran dalam */
+    height: 20px; /* Ukuran lingkaran dalam */
+    background-color: #A8D3D9; /* Warna lingkaran dalam */
+    border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	margin: 9px 0;
+	transform: translateY(10%); /* Menyesuaikan posisi vertikal */
+	
+}
+
+.circle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date {
+    font-size: 14px;
+    color: #000; /* Adjust text color as needed */
+}
+
+.text {
+    font-size: 18px;
+	font-weight: bold;
+    color: #000; /* Adjust text color as needed */
+}
+
+.circle::after {
+	content: "";
+	position: absolute;
+	width: 250px;
+	height: 5px;
+	background-color: #152b79;
+	top: 13px;
+	right: 30px;
+	z-index: 0;
+}
+
+.one::after{
+	width: 0;
+	height: 0;
+}
+
+@media (max-width: 768px) {
+	.box {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.circle-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 20px; /* Adjust space between items */
+		width: 100%; /* Ensure full width for proper alignment */
+	}
+
+	.circle {
+		margin: 0 12px 0 0; /* Adjust space around circles */
+	}
+
+	.circle::after {
+		width: 5px;
+		height: 50px;
+		top: -48px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.one::after {
+		width: 0;
+		height: 0;
+	}
+
+	.text, .date {
+		margin-left: 10px;
+	}
+
+	.text-date-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-left: 10px;
+	}
+
+	.text {
+		margin: 0;
+	}
+
+	.date {
+		margin: 0;
+	}
+}
+
+
+
+
+/*--------------------------------------------------------------
 # Schedule Section
 --------------------------------------------------------------*/
 
