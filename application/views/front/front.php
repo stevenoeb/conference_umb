@@ -194,7 +194,7 @@
      <!--==========================
       Timeline Section
     ============================-->
-        <!-- <section id="timelines" class="wow fadeInUp">
+        <section id="timelines" class="wow fadeInUp">
     <div class="container">
       <div class="section-header">
         <h2>Timeline Event</h2>
@@ -205,7 +205,7 @@
         <div class="box">
           <div class="circle-container">
             <div class="circle one"></div>
-            <div class="inner-circle"></div>
+            <!-- <div class="inner-circle"></div> -->
             <div class="text-date-container">
               <div class="text">Abstract submission</div>
               <div class="Date">July 1-5, 2024</div>
@@ -213,7 +213,7 @@
           </div>
           <div class="circle-container">
             <div class="active circle two"></div>
-            <div class="inner-circle"></div>
+            <!-- <div class="inner-circle"></div> -->
             <div class="text-date-container">
               <div class="text">Full Paper Submission</div>
               <div class="Date">July 8-12, 2024</div>
@@ -221,7 +221,7 @@
           </div>
           <div class="circle-container">
             <div class="circle three"></div>
-            <div class="inner-circle"></div>
+            <!-- <div class="inner-circle"></div> -->
             <div class="text-date-container">
               <div class="text">Article Presentation <br>and other competitions</div>
               <div class="Date">July 15-16, 2024</div>
@@ -229,7 +229,7 @@
           </div>
           <div class="circle-container">
             <div class="circle four"></div>
-            <div class="inner-circle"></div>
+            <!-- <div class="inner-circle"></div> -->
             <div class="text-date-container">
               <div class="text">Awarding</div>
               <div class="Date">July 19th, 2024</div>
@@ -241,7 +241,7 @@
   </section>
 
     </div>
-    </section> -->
+    </section>
 
     <!--==========================
       Schedule Section

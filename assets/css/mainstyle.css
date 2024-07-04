@@ -935,12 +935,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 .inner-circle {
     width: 20px; /* Ukuran lingkaran dalam */
     height: 20px; /* Ukuran lingkaran dalam */
-    background-color: #A8D3D9; /* Warna lingkaran dalam */
+    background-color: #f50101; /* Warna lingkaran dalam */
     border-radius: 50%;
 	position: absolute;
-	top: 50%;
+	top: 35%;
 	margin: 9px 0;
-	transform: translateY(10%); /* Menyesuaikan posisi vertikal */
+	transform: translateY(-50%); /* Menyesuaikan posisi vertikal */
 	
 }
 
@@ -998,9 +998,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 	.circle::after {
 		width: 5px;
 		height: 50px;
-		top: -48px;
+		top: -70px;
 		left: 50%;
-		transform: translateX(-50%);
+		transform: translateX(-70%);
 	}
 
 	.one::after {
