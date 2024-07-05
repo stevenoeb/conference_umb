@@ -197,8 +197,8 @@
         <section id="timelines" class="wow fadeInUp">
     <div class="container">
       <div class="section-header">
-        <h2>Timeline Event</h2>
-        <p>Here is Timeline</p>
+        <h2>Important Dates</h2>
+        <p>Here is our important dates</p>
       </div>
 
       <div class="timeline">
